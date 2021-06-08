@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name ="colorPrimary">@color/sun</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="sun">#FFD159</color>
+    <color name="heavy_sun">#E6BC50</color>
+    <color name="light_sun">#FEFBF9</color>
+    <color name="grey">#9b9b9b</color>
+    <color name="config_color_select_bg">#FFF1F1F1</color>
+    <color name="bottom">#D8D8D8</color>
+    <color name="green">#53B175</color>
+
+</resources>

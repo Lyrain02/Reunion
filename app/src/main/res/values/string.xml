@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_submit1">
+        <item>A型</item>
+        <item>B型</item>
+        <item>AB型</item>
+        <item>O型</item>
+        <item>未知</item>
+    </string-array>
+</resources>

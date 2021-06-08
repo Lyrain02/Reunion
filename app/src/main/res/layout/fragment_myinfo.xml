@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_sun"
+    android:orientation="vertical"
+    tools:context=".ui.myinfo.MyinfoFragment">
+<!--   我的信息页面 -->
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:paddingTop="50dp"
+
+        android:paddingLeft="30dp"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            android:src="@drawable/eg_boy"
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:paddingLeft="30dp"
+
+            android:paddingTop="28dp"
+            android:text="用户名"
+            android:textSize="19dp"
+            />
+
+        <ImageView
+            android:id="@+id/reset_name"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:paddingTop="32dp"
+            android:paddingRight="60dp"
+            android:paddingBottom="29dp"
+            android:src="@drawable/rectify"
+
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="14dp"
+            android:paddingBottom="60dp"
+            >
+
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="40dp"
+                android:elevation="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/circlebutton"
+                android:gravity="center"
+                android:text="已实名"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_height="45dp"
+
+    android:background="@color/white"
+
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="40dp"
+
+        android:id="@+id/image_myinfo"
+        android:layout_height="45dp"
+        android:src="@drawable/myinfoo"
+/>
+    <TextView
+        android:id="@+id/text_myinfo"
+        android:layout_width="270dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/black"
+
+        android:gravity="center"
+        android:text="我的信息"
+        android:textSize="16sp" />
+    <ImageView
+        android:id="@+id/into_myinfo"
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/into"
+
+        />
+
+
+
+
+
+</LinearLayout>
+
+
+<ImageView
+    android:layout_width="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_height="1dp"
+    android:src="@color/grey"
+    />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="45dp"
+
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:id="@+id/image_myfind"
+            android:layout_height="45dp"
+            android:src="@drawable/lingdang"
+            />
+
+        <TextView
+            android:id="@+id/text_myfind"
+            android:layout_width="270dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="我的寻人信息"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/into_myfind"
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/into"
+
+            />
+
+
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="1dp"
+        android:src="@color/grey"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="45dp"
+
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:id="@+id/image_myrelative"
+            android:layout_height="45dp"
+            android:src="@drawable/evenlope"
+            />
+        <TextView
+            android:id="@+id/text_myrelative"
+            android:layout_width="270dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="我的寻亲信息"
+            android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/into_myrelative"
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/into"
+
+            />
+
+
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="1dp"
+        android:src="@color/grey"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="45dp"
+
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:id="@+id/image_myclue"
+            android:layout_height="45dp"
+            android:src="@drawable/clue"
+            />
+        <TextView
+            android:id="@+id/text_myclue"
+            android:layout_width="270dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="我提供的有关线索"
+            android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/into_myclue"
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/into"
+
+            />
+
+
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="1dp"
+        android:src="@color/grey"
+        />
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:paddingRight="10dp"-->
+<!--        android:layout_height="45dp"-->
+
+<!--        android:background="@color/white"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:paddingTop="9dp"-->
+<!--            android:paddingBottom="9dp"-->
+<!--            android:id="@+id/image_help"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/help"-->
+<!--            />-->
+<!--        <TextView-->
+<!--            android:id="@+id/text_help"-->
+<!--            android:layout_width="270dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:gravity="center"-->
+<!--            android:text="帮助"-->
+<!--            android:textSize="16sp" />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/into_help"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:src="@drawable/into"-->
+
+<!--            />-->
+
+
+
+
+
+<!--    </LinearLayout>-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:paddingRight="10dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:src="@color/grey"-->
+<!--        />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingTop="120dp"
+        android:gravity="center"
+        android:layout_height="200dp">
+        <TextView
+            android:id="@+id/logout_myinfo"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:elevation="10dp"
+            android:background="@drawable/log_out"
+            android:gravity="center"
+            android:text="登出"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

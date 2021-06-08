@@ -1,0 +1,37 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    Base application theme.
+
+    <style name="Theme.MyTest" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/sun</item>
+        <item name="colorPrimaryVariant">@color/heavy_sun</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/heavy_sun</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorAccent">@color/sun</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.MyTest.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MyTest.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MyTest.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!-- Base application theme. -->
+    <!--    <style name="AppTheme" parent="XUITheme.Phone">-->
+    <!--        &lt;!&ndash; 自定义自己的主题样式 &ndash;&gt;-->
+    <!--        <item name="colorPrimary">@color/sun</item>-->
+    <!--        <item name="colorPrimaryDark">@color/sun</item>-->
+    <!--        <item name="colorAccent">@color/sun</item>-->
+    <!--    </style>-->
+
+</resources>

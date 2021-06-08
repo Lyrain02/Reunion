@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mytest">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyTest">
+        <activity android:name=".ui.Myclue.MyClueActivity"></activity>
+        <activity android:name=".ui.submit.Submit2Activity" />
+        <activity android:name=".ui.myrelative.MyRelativeActivity" />
+        <activity android:name=".ui.squareDetail.aDetailActivity" />
+        <activity android:name=".ui.submit.Submit1Activity" />
+        <activity
+            android:name=".ui.myfind.MyFindActivity"
+            android:label="@string/title_activity_my_find"
+            android:theme="@style/Theme.MyTest.NoActionBar" />
+        <activity android:name=".ui.mydetail.MyDetailActivity" />
+        <activity android:name=".registerActivity" />
+        <activity android:name=".loginActivity" />
+        <activity
+            android:name=".initialActivity"
+            android:fitsSystemWindows="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" />
+    </application>
+
+</manifest>
