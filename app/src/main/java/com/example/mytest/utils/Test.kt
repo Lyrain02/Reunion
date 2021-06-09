@@ -1,5 +1,7 @@
 package com.example.mytest.utils
 
+import com.example.mytest.user.User
+
 class Test {
 
 }
@@ -14,6 +16,13 @@ private fun refreshCheckCode():String{
 }
 
 
-//private fun main(){
+private fun main(){
 //    println(refreshCheckCode())
-//}
+//    println("User's id is ${User.id}, name is ${User.name}")
+//    User.login(5,"Jack")
+//    println("User's id is ${User.id}, name is ${User.name}")
+//    User.logout()
+//    println("User's id is ${User.id}, name is ${User.name}")
+//    User.login(2,"Sam")
+//    println("User's id is ${User.id}, name is ${User.name}")
+}

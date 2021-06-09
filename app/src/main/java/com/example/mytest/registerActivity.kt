@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.*
+import com.example.mytest.user.User
 import org.w3c.dom.Text
 
 class registerActivity : AppCompatActivity() {
@@ -41,7 +42,6 @@ class registerActivity : AppCompatActivity() {
             val pwd2: String = viewHolder.etpwd2.text.toString().trim()
             if(isCheckCodeValid(inputCheckStr,checkStr)){
                 if (isRegisterValid(username, pwd1, pwd2)) {
-                    insertUser(username, pwd1)
                     finish()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
@@ -55,9 +55,8 @@ class registerActivity : AppCompatActivity() {
     }
 
     private fun isRegisterValid(username:String,pwd1:String,pwd2:String):Boolean{
-
-        if(username==null||username.length<=4){
-            Toast.makeText(this,"用户名长度至少为5位！", Toast.LENGTH_SHORT).show()
+        if(username==null||username.length<=2){
+            Toast.makeText(this,"用户名长度至少为3位！", Toast.LENGTH_SHORT).show()
             clearUserName(viewHolder.etusername)
             clearPassword(viewHolder.etpwd1,viewHolder.etpwd2)
             clearCheckCode(viewHolder.inputCode,viewHolder.checkCode)
@@ -76,14 +75,21 @@ class registerActivity : AppCompatActivity() {
             clearCheckCode(viewHolder.inputCode,viewHolder.checkCode)
             return false
         }
-
+        val id = insertUser(username,pwd1)
+        if(id < 0){
+            Toast.makeText(this,"注册失败！", Toast.LENGTH_SHORT).show()
+            clearCheckCode(viewHolder.inputCode,viewHolder.checkCode)
+            return false
+        }
+        User.login(id,username)
         return true
     }
 
-    private fun insertUser(username: String,pw:String){
+    private fun insertUser(username: String,pw:String):Int{
         //更新数据库
-        //将用户命和密码插入数据库
-        //获取用户id
+        //将用户命和密码插入数据库,获取用户id
+        //-1表示失败，0为测试用户，1以上为真实用户
+        return 0
     }
 
     private fun refreshCheckCode():String{

@@ -2,6 +2,7 @@ package com.example.mytest
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.UserHandle
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -10,9 +11,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.mytest.ui.myinfo.MyinfoFragment
+import com.example.mytest.user.User
 
 class MainActivity : AppCompatActivity() {
-
+    val tag = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val id = intent.getIntExtra("id",0)
-        Log.d("aaaggga",id.toString())
+        Log.d(tag,id.toString())
 //        if (id == 3) {
 //            Log.d("aaaa","intent"+id)
 //            getSupportFragmentManager()
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 //                .addToBackStack(null)
 //                .commit()
 //        }
+        Log.d(tag,"Welcome user ${User.name}")
 
     }
 }
