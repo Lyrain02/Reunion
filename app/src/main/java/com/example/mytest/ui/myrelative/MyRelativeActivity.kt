@@ -21,21 +21,15 @@ class MyRelativeActivity : AppCompatActivity() {
     val infolist: ArrayList<myfindMsg> = ArrayList()
     override fun onStart() {
         super.onStart()
-
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_relative)
         supportActionBar?.hide()
 
-        //返回我的信息界面按钮
-        val img_back: ImageView =findViewById(R.id.back_myfind)
-        img_back.setOnClickListener(){
 
-            val intent: Intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("id", 3)
-            startActivity(intent)
-        }
+
+
 
         Log.d("aa", "activity_my_find")
         //设置瀑布流界面

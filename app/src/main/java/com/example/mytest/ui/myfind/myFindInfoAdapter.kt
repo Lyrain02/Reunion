@@ -62,39 +62,3 @@ class myFindInfoAdapter (val infolist:List<myfindMsg>) : RecyclerView.Adapter<my
     }
     override fun getItemCount() = infolist.size
 }
-
-//废物代码
-//        viewHolder.itemView.setOnClickListener(View.OnClickListener { v -> //可以选择直接在本位置直接写业务处理
-//            Log.d("aaa","clickItem")
-//viewHolder.adapterPosition
-//            Log.d("aaa",viewHolder.adapterPosition.toString())
-//
-//            Toast.makeText(view.context,"点击了 555",Toast.LENGTH_SHORT).show();
-//            //此处回传点击监听事件
-//         //   onItemClickListener?.OnItemClick(v, infolist[viewHolder.adapterPosition])
-//        })
-//        viewHolder.itemView.setOnClickListener(object : View.OnClickListener{
-//            override fun onClick(v: View?) {
-//                val position = viewHolder.adapterPosition
-//                Log.d("aaa",viewHolder.adapterPosition.toString())
-//                //val info = infolist[position]
-////                Toast.makeText(parent.context, "you clicked view ${info.name}",
-////                    Toast.LENGTH_SHORT).show()
-//
-//
-//            }
-//        })
-//设置监听器
-//        viewHolder.itemView.setOnClickListener() {
-//
-//            val position = viewHolder.adapterPosition
-//            val info = infolist[position]
-//            Toast.makeText(parent.context, "you clicked view ${info.name}",
-//                Toast.LENGTH_SHORT).show()
-//        }
-//        viewHolder.pimage.setOnClickListener {
-//            val position = viewHolder.adapterPosition
-//            val info = infolist[position]
-//            Toast.makeText(parent.context, "you clicked image ${info.name}",
-//                Toast.LENGTH_SHORT).show()
-//        }

@@ -19,6 +19,7 @@ class initialActivity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_initial)
         supportActionBar?.hide()
+
         val button1: Button =findViewById(R.id.btn_login)
         val button2: Button =findViewById(R.id.btn_register)
         button1.setOnClickListener{

@@ -4,43 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/light_sun"
     android:orientation="vertical"
-    android:background="@drawable/bgmyinfo"
+
     tools:context=".ui.mydetail.MyDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="56dp"
+        android:background="@color/sun"
+        android:orientation="horizontal">
+
+        <com.example.mytest.ui.icon.BackLayout
+            android:id="@+id/back_mydetail"
+            android:layout_width="60dp"
+            android:layout_height="56dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="290dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="我的信息"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/toolbar" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:paddingTop="100dp"
-        android:layout_height="400dp"
-        android:orientation="vertical">
+        android:layout_height="505dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_myinfo"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="160dp"
+            android:src="@drawable/eg_girl" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="20dp"
-            android:background="@color/white"
-            android:text="统计数据:"
-            android:textSize="18dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@drawable/toolbar" />
-
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="180dp"
+            android:text="用户名"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
 
 
     </LinearLayout>
-
 
 
 </LinearLayout>
