@@ -2,10 +2,10 @@
 This is an android App which engages in helping people find their lost family.
 # 安卓页面
 ## 整体框架流程
-以下文件名中的书写格式：/前面是layout 后面是activity
-+ 首页 activity_initial/initialActivity
+以下文件名中的书写格式：/前面是layout 后面是activity      √
++ 首页 activity_initial/initialActivity       √
 + 登录页面 activity_login/loginActivity
-+ 注册页面 activity_register/registerActivity
++ 注册页面 activity_register/registerActivity       √
 + 主页面整体（包括下面的tab navigation）activity_main/MainActivity
 + 广场页面：(ui)square文件夹 fragment_square/SquareFragment
   + 根据上面的tablayout分为广场A和广场B

@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/light_sun"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/light_sun"
     tools:context=".registerActivity">
     <ImageView
         android:id="@+id/back"
@@ -25,6 +25,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginLeft="15dp"
             app:srcCompat="@drawable/familytree" />
 
     </RelativeLayout>
@@ -34,9 +35,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="注册"
+        android:text="注 册"
 
-        android:textSize="40dp" />
+        android:textSize="38dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +56,8 @@
                 android:id="@+id/username"
                 android:textSize="14dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:singleLine="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -91,55 +93,55 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
-            android:layout_width="268dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="160dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
-
                 android:hint="验证码">
 
                 <EditText
-                    android:id="@+id/code"
+                    android:id="@+id/inputCode"
                     android:textSize="14dp"
-                    android:inputType="textPassword"
-                    android:layout_width="160dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
-                android:layout_width="200dp"
+            <TextView
+                android:id="@+id/checkCode"
+                android:layout_width="wrap_content"
                 android:layout_height="39dp"
-                android:paddingLeft="40dp"
-                android:background="@color/heavy_sun"
-
-                />
-
+                android:layout_gravity="right"
+                android:layout_marginLeft="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="1675"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:background="@color/heavy_sun"/>
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
+            android:layout_marginTop="20dp"
             >
 
             <Button
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/yellow_button"
-                android:text="注册"
-                android:textColor="@color/white"
-               />
-
-        </RelativeLayout>
-
-
-
+                android:text="注       册"
+                android:textColor="@color/white"/>
+        </LinearLayout>
 
     </LinearLayout>
 
