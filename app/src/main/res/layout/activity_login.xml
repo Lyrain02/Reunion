@@ -9,13 +9,9 @@
     android:orientation="vertical"
     tools:context=".loginActivity">
 
-    <ImageView
-        android:id="@+id/back"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:layout_width="30dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/back" />
+    <com.example.mytest.ui.icon.BackLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <RelativeLayout
         android:layout_width="match_parent"

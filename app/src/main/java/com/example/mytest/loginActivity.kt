@@ -46,23 +46,18 @@ class loginActivity : AppCompatActivity() {
                 }
             }
         }
-
-        val btn_back: ImageView =findViewById(R.id.back)
-        btn_back.setOnClickListener(){
-            finish()
-        }
     }
 
 
     private fun isLoginValid(username:String,pwd:String):Boolean{
-        if(username==null||username.length<=2){
+        if(username.length<=2){
             Toast.makeText(this,"用户名长度至少为3位！", Toast.LENGTH_SHORT).show()
             clearUserName(viewHolder.etusername)
             clearPassword(viewHolder.etpwd)
             clearCheckCode(viewHolder.inputCode,viewHolder.checkCode)
             return false
         }
-        if(pwd==null||pwd.length<=4)
+        if(pwd.length<=4)
         {
             Toast.makeText(this,"密码长度至少为5位！", Toast.LENGTH_SHORT).show()
             clearPassword(viewHolder.etpwd)

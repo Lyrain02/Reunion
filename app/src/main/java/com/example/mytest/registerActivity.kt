@@ -48,10 +48,6 @@ class registerActivity : AppCompatActivity() {
                 }
             }
         }
-        val btn_back: ImageView =findViewById(R.id.back)
-        btn_back.setOnClickListener{
-            finish()
-        }
     }
 
     private fun isRegisterValid(username:String,pwd1:String,pwd2:String):Boolean{
