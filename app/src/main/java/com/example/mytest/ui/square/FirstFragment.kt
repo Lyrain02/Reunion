@@ -17,7 +17,7 @@ import com.example.mytest.ui.squareDetail.aDetailActivity
 
 
 class FirstFragment : Fragment() {
-
+    private val tag1 = "FirstFragment"
     val infolist:ArrayList<Easy1Msg> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,8 +6,8 @@ This is an android App which engages in helping people find their lost family.
 + 首页 activity_initial/initialActivity       √
 + 登录页面 activity_login/loginActivity     √
 + 注册页面 activity_register/registerActivity       √
-+ 主页面整体（包括下面的tab navigation）activity_main/MainActivity
-+ 广场页面：(ui)square文件夹 fragment_square/SquareFragment
++ 主页面整体（包括下面的tab navigation）activity_main/MainActivity      √
++ 广场页面：(ui)square文件夹 fragment_square/SquareFragment     √
   + 根据上面的tablayout分为广场A和广场B
   + 广场A页面：fragment_first/FirstFragment
   + 广场B界面：fragment_second/SecondActivity
