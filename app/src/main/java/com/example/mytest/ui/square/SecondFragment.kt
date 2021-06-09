@@ -56,12 +56,12 @@ class SecondFragment : Fragment() {
 
     private fun initInfo() {
         repeat(2) {
-            infolist.add(Easy1Msg("卿政庭", "2015年2月10日", R.drawable.qzt, "合川"))
-            infolist.add(Easy1Msg("覃钦颢", "2014年12月14日", R.drawable.qqh, "石门县壶瓶山镇后路坪村5组"))
-            infolist.add(Easy1Msg("王梦芸", "2016年3月30日", R.drawable.wmy, "云南省曲靖市"))
-            infolist.add(Easy1Msg("姜信轩", "1994年", R.drawable.jxx, "不清楚"))
-            infolist.add(Easy1Msg("华墨瑶", "2016年11月16日", R.drawable.hmy, "河南"))
-            infolist.add(Easy1Msg("党春芸", "2015年9月3日", R.drawable.dcy, "蔚县桃花镇鸭涧村桥北"))
+            infolist.add(Easy1Msg(1,"卿政庭", "2015年2月10日", R.drawable.qzt, "合川"))
+            infolist.add(Easy1Msg(2,"覃钦颢", "2014年12月14日", R.drawable.qqh, "石门县壶瓶山镇后路坪村5组"))
+            infolist.add(Easy1Msg(3,"王梦芸", "2016年3月30日", R.drawable.wmy, "云南省曲靖市"))
+            infolist.add(Easy1Msg(4,"姜信轩", "1994年", R.drawable.jxx, "不清楚"))
+            infolist.add(Easy1Msg(5,"华墨瑶", "2016年11月16日", R.drawable.hmy, "河南"))
+            infolist.add(Easy1Msg(6,"党春芸", "2015年9月3日", R.drawable.dcy, "蔚县桃花镇鸭涧村桥北"))
 
 
         }

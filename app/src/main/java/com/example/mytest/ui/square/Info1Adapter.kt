@@ -6,29 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mytest.R
 
 /*A类广场瀑布流的recycleview适配器*/
 class Info1Adapter(val infolist:List<Easy1Msg>) :RecyclerView.Adapter<Info1Adapter.ViewHolder>(){
+    val tag = "Info1Adapter"
     inner class ViewHolder(view: View):RecyclerView.ViewHolder(view) {
         val pimage:ImageView=view.findViewById(R.id.pimage)
         val pname:TextView = view.findViewById(R.id.pname)
         val pdate:TextView = view.findViewById(R.id.pdate)
         val pplace:TextView=view.findViewById(R.id.pplace)
-
     }
+
     interface OnItemClickListener {
         fun OnItemClick(view: View?, data: Easy1Msg?)
     }
-
-
 
     //需要外部访问，所以需要设置set方法，方便调用
     private var onItemClickListener: OnItemClickListener? = null
 
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener?) {
-        Log.d("aaaa","clickListen")
+        Log.d(tag,"clickListen")
     }
 
 //    函数：加载recyclerview
@@ -36,9 +36,10 @@ class Info1Adapter(val infolist:List<Easy1Msg>) :RecyclerView.Adapter<Info1Adapt
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.easy_info, parent, false)
         val viewHolder = ViewHolder(view)
-        Log.d("aa","Cycle")
+        Log.d(tag,"Cycle")
         return ViewHolder(view)
     }
+
 //    将数据和recyclerview绑定
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val info = infolist[position]
@@ -50,7 +51,5 @@ class Info1Adapter(val infolist:List<Easy1Msg>) :RecyclerView.Adapter<Info1Adapt
 
     }
     override fun getItemCount() = infolist.size
-
-
 }
 
