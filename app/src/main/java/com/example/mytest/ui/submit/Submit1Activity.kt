@@ -194,31 +194,3 @@ class Submit1Activity : AppCompatActivity() {
     }
 
 }
-
-//废物代码：
-//mtimepicker.setOnClickListener(View.OnClickListener() {
-//           fun onClick() {
-//               val c = Calendar.getInstance()
-//               c.setTimeInMillis(System.currentTimeMillis())
-//               val hour: Int = c.get(Calendar.HOUR_OF_DAY)
-//               val minute: Int = c.get(Calendar.MINUTE)
-//               TimePickerDialog(
-//                   this,
-//                   OnTimeSetListener { view, hourOfDay, minute ->
-//                       c.setTimeInMillis(System.currentTimeMillis())
-//                       c.set(Calendar.HOUR_OF_DAY, hourOfDay)
-//                       c.set(Calendar.MINUTE, minute)
-//                       c.set(Calendar.SECOND, 0)
-//                       c.set(Calendar.MILLISECOND, 0)
-//                       Toast.makeText(
-//                           this,
-//                           c.get(Calendar.HOUR_OF_DAY).toString() + ":" + c.get(Calendar.MINUTE),
-//                           Toast.LENGTH_SHORT
-//                       ).show()
-//                   }, hour, minute, true
-//               ).show()
-//               mtimepicker.text=c.get(Calendar.HOUR_OF_DAY).toString() + ":" + c.get(Calendar.MINUTE)
-//
-//
-//           }
-//       })

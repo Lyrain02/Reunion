@@ -28,15 +28,6 @@ class MyFindActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_find)
 
-        //返回我的信息界面按钮
-        val img_back:ImageView=findViewById(R.id.back_myfind)
-        img_back.setOnClickListener(){
-
-            val intent: Intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("id", 3)
-            startActivity(intent)
-        }
-
         Log.d("aa", "activity_my_find")
         //设置瀑布流界面
         val layoutManager = StaggeredGridLayoutManager(1,
