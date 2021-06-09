@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.mytest.R
 import com.example.mytest.initialActivity
 import com.example.mytest.ui.squareDetail.aDetailActivity
+import com.example.mytest.ui.squareDetail.bDetailActivity
 
 
 class FirstFragment : Fragment() {
@@ -63,13 +64,12 @@ class FirstFragment : Fragment() {
                     // do whatever
                     Log.d(tag1,"you clicked ${infolist[position].name}")
                     //跳转到详情页
-//                    val pid:Int = infolist[position].pid
-//                    //val intent: Intent = Intent(activity, aDetailActivity::class.java)
-//                    val intent: Intent = Intent(activity, initialActivity::class.java)
-//                    val bundle = Bundle()
-//                    bundle.putInt("pid", pid)
-//                    intent.putExtras(bundle)
-//                    startActivity(intent)
+                    val pid: Int = infolist[position].pid
+                    val intent: Intent = Intent(activity, aDetailActivity::class.java)
+                    val bundle = Bundle()
+                    bundle.putInt("pid", pid)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
                 }
 
                 override fun onLongItemClick(view: View?, position: Int) {

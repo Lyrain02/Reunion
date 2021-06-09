@@ -26,7 +26,7 @@ class loginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         viewHolder = ViewHolder()
-
+        viewHolder.checkCode.text = refreshCheckCode()
         viewHolder.checkCode.setOnClickListener{
             viewHolder.checkCode.text = refreshCheckCode()
             Log.d(tag,"check code is ${viewHolder.checkCode.text}")

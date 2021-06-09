@@ -4,11 +4,11 @@ import android.util.Log
 
 object User{
     const val tag = "user"
-    var id:Int? = null      //0为测试用户
-    var name:String? = null
+    var id:Int = 0      //0为测试用户
+    var name:String = "test"
 
-    fun isValid():Boolean{
-        if(id==null && name ==null)
+    private fun isValid():Boolean{
+        if(id==0 && name =="test")
             return false
         return true
     }
@@ -24,8 +24,8 @@ object User{
     }
 
     fun logout(){
-        this.id = null
-        this.name = null
+        this.id = 0
+        this.name = "test"
         Log.d(tag,"Log out successfully!")
     }
 }

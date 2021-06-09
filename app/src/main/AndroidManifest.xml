@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTest">
-        <activity android:name=".ui.Myclue.MyClueActivity"></activity>
+        <activity android:name=".ui.squareDetail.bDetailActivity"></activity>
+        <activity android:name=".ui.Myclue.MyClueActivity" />
         <activity android:name=".ui.submit.Submit2Activity" />
         <activity android:name=".ui.myrelative.MyRelativeActivity" />
         <activity android:name=".ui.squareDetail.aDetailActivity" />
