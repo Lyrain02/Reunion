@@ -9,22 +9,20 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp">
+        android:layout_margin="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
-            android:paddingTop="5dp"
+            android:paddingTop="0dp"
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/pimage"
-                android:layout_width="170dp"
-                android:layout_height="160dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
+                android:scaleType="centerCrop"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,19 +30,38 @@
                 android:orientation="vertical"
                 android:paddingTop="10dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     >
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="65dp"
                         android:layout_height="wrap_content"
-                        android:text="姓名: "
-                        android:textStyle="bold"
-                        />
+                        android:orientation="horizontal"
+                        android:layout_marginRight="2dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="姓"
+                            android:textStyle="bold"
 
+                            />
+                        <TextView
+                            android:layout_width="26dp"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="名: "
+                            android:lineSpacingExtra="@dimen/activity_horizontal_margin"
+                            android:textStyle="bold"
+                            />
+                    </LinearLayout>
                     <TextView
                         android:id="@+id/pname"
                         android:layout_width="match_parent"
@@ -60,10 +77,11 @@
                     android:orientation="horizontal"
                     >
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="65dp"
                         android:layout_height="wrap_content"
-                        android:text="走失时间: "
+                        android:text="走失时间:"
                         android:textStyle="bold"
+                        android:layout_marginRight="2dp"
                         />
                     <TextView
                         android:id="@+id/pdate"
@@ -80,10 +98,11 @@
                     android:orientation="horizontal"
                     >
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="65dp"
                         android:layout_height="wrap_content"
-                        android:text="失踪位置: "
+                        android:text="失踪位置:"
                         android:textStyle="bold"
+                        android:layout_marginRight="2dp"
                         />
                     <TextView
                         android:id="@+id/pplace"
