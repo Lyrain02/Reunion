@@ -26,6 +26,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginLeft="15dp"
             app:srcCompat="@drawable/familytree" />
 
     </RelativeLayout>
@@ -35,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="登录"
+        android:text="登 录"
         android:textColor="@color/grey"
         android:textSize="40dp" />
 
@@ -43,26 +44,29 @@
         android:layout_width="match_parent"
         android:layout_height="374dp"
         android:paddingLeft="44dp"
-        android:paddingTop="50dp"
+        android:paddingTop="20dp"
         android:orientation="vertical"
         android:paddingRight="44dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="用户名">
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/username2"
                 android:textSize="14dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:singleLine="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:counterEnabled="true"
             app:counterMaxLength="20"
             android:hint="密码">
@@ -70,47 +74,53 @@
             <EditText
                 android:id="@+id/pwd"
                 android:textSize="14dp"
-
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:singleLine="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <LinearLayout
-            android:layout_width="268dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="160dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
-
                 android:hint="验证码">
 
                 <EditText
-                    android:id="@+id/code"
+                    android:id="@+id/inputCode2"
                     android:textSize="14dp"
-                    android:inputType="textPassword"
-                    android:layout_width="160dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="35dp"
-                android:paddingLeft="30dp"
-                android:background="@color/heavy_sun"
-
-                />
-
+            <TextView
+                android:id="@+id/checkCode2"
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:layout_gravity="right"
+                android:layout_marginLeft="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="2836"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:background="@color/heavy_sun" />
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="30dp"
+            android:paddingTop="40dp"
             >
 
             <Button
@@ -118,16 +128,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="8dp"
                 android:background="@drawable/yellow_button"
-                android:text="登录"
-                android:textColor="@color/white"
-                />
+                android:text="登       录"
+                android:textColor="@color/white" />
 
-        </RelativeLayout>
-
-
-
-
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
