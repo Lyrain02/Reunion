@@ -77,7 +77,7 @@ public class Util {
         config.setEndpoint(ENDPOINT);
         BosClient client = new BosClient(config);
         // 获取指定文件
-        String objectKey = file.getName();
+        String objectKey = new Random().nextInt()+ file.getName();
         // 以文件形式上传Object
         PutObjectResponse putObjectFromFileResponse =
                 client.putObject("file-bed", objectKey, file);
