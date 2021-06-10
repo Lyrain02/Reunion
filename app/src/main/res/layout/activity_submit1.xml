@@ -84,12 +84,6 @@
                     android:paddingTop="5dp"
                     android:src="@drawable/name" />
 
-                <!--        <EditText-->
-
-                <!--            android:layout_width="372dp"-->
-                <!--            android:layout_height="35dp"-->
-                <!--            android:background="@drawable/edit_text" />-->
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textField1"
                     android:layout_width="match_parent"
@@ -100,7 +94,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/name_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -205,11 +200,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/detail_place_submit1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
-
-
                 </LinearLayout>
 
 
@@ -239,7 +233,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/date_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -260,7 +255,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/time_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -291,7 +287,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/age_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -313,7 +310,7 @@
                     android:src="@drawable/gender" />
 
                 <RadioGroup
-                    android:id="@+id/radioGroup"
+                    android:id="@+id/radioGroup1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -329,21 +326,21 @@
                         android:textSize="17dp" />
 
                     <RadioButton
-                        android:id="@+id/radio_button_1"
+                        android:id="@+id/radio1_button_1"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
                         android:text="男" />
 
                     <RadioButton
-                        android:id="@+id/radio_button_2"
+                        android:id="@+id/radio1_button_2"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
                         android:text="女" />
 
                     <RadioButton
-                        android:id="@+id/radio_button_3"
+                        android:id="@+id/radio1_button_3"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
@@ -405,7 +402,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/tall_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -430,13 +428,14 @@
                     android:id="@+id/textField10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="体型"
+                    android:hint="体重(kg)"
                     android:paddingLeft="15dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/shape_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -527,6 +526,7 @@
                     android:src="@drawable/picture" />
 
                 <TextView
+                    android:id="@+id/loadImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -603,7 +603,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/linkmanName_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -630,7 +631,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/linkmanTelephone_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -645,7 +647,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/linkmanPostcode_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -660,7 +663,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/linkmanAddress_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -669,13 +673,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
-                    android:hint="亲属关系"
+                    android:hint="关系"
                     android:paddingLeft="15dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/linkmanRelationship_submit1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 

@@ -15,7 +15,8 @@ object Data {
 
     val my_ListA = ArrayList<Person>()
     val my_ListB = ArrayList<Person>()
-    val my_ListClue = ArrayList<Person>()
+    val my_ListClueA = ArrayList<Person>()
+    val my_ListClueB = ArrayList<Person>()
 
 
     init{
@@ -101,7 +102,7 @@ object Data {
         p3.s_name = "腾冲收留所"
         p3.s_phone = "12583628376"
         p3.s_address = "云南省腾冲市"
-        p3.clues.add(PersonClue(p3.pid,1,"2018年3月1日","好像之前在村里见过这孩子"))
+        p3.clues.add(PersonClue(p3.pid,0,"2018年3月1日","好像之前在村里见过这孩子"))
 
         var p4 = Person()
         p4.pid = 1
@@ -122,7 +123,7 @@ object Data {
         p4.s_name = "阳光救助站"
         p4.s_phone = "010-4859320"
         p4.s_address = "河北省张家口市"
-        p4.clues.add(PersonClue(p4.pid,1,"2015年12月2日","好像是我叔的同事的儿子"))
+        p4.clues.add(PersonClue(p4.pid,0,"2015年12月2日","好像是我叔的同事的儿子"))
 
 
         repeat(4){
@@ -137,10 +138,10 @@ object Data {
         my_ListB.add(p3)
         my_ListB.add(p4)
 
-        my_ListClue.add(p1)
-        my_ListClue.add(p2)
-        my_ListClue.add(p3)
-        my_ListClue.add(p4)
+        my_ListClueA.add(p1)
+        my_ListClueA.add(p2)
+        my_ListClueB.add(p3)
+        my_ListClueB.add(p4)
 
     }
 }

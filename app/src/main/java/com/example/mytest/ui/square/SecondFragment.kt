@@ -14,12 +14,14 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.mytest.R
 import com.example.mytest.ui.squareDetail.aDetailActivity
 import com.example.mytest.ui.squareDetail.bDetailActivity
+import com.example.mytest.user.Data
+import com.example.mytest.user.Person
 
 
 class SecondFragment : Fragment() {
     val tag1 ="SecondFragment"
-
     val infolist: ArrayList<Easy1Msg> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,22 +44,21 @@ class SecondFragment : Fragment() {
         Log.d(Constraints.TAG, "Secondfragment")
         //获取页面的view
         val root: View = inflater.inflate(R.layout.fragment_second, container, false)
+
         //将人物信息填入数组infolist
+        initInfo()
+
+        //获取这个页面的recycleview并且设置瀑布流
         val recyclerView: RecyclerView = root.findViewById(R.id.recycleview2)
         val adapter = Info2Adapter(infolist)
         recyclerView.adapter = adapter
-        initInfo()
-        //获取这个页面的recycleview并且设置瀑布流
-
         recyclerView.setLayoutManager(
             StaggeredGridLayoutManager(
                 2,
                 StaggeredGridLayoutManager.VERTICAL
             )
         )
-        //绑定适配器和数组，将适配器作为recycleview的适配器
 
-        recyclerView.adapter = adapter
 
         /*操作：recyclerview中获得每个item的位置（数组下标）*/
         recyclerView.addOnItemTouchListener(
@@ -86,16 +87,15 @@ class SecondFragment : Fragment() {
     }
 
     private fun initInfo() {
-        repeat(2) {
-            infolist.add(Easy1Msg(1, "卿政庭", "2015年2月10日", R.drawable.qzt, "合川"))
-            infolist.add(Easy1Msg(2, "覃钦颢", "2014年12月14日", R.drawable.qqh, "石门县壶瓶山镇后路坪村5组"))
-            infolist.add(Easy1Msg(3, "王梦芸", "2016年3月30日", R.drawable.wmy, "云南省曲靖市"))
-            infolist.add(Easy1Msg(4, "姜信轩", "1994年", R.drawable.jxx, "不清楚"))
-            infolist.add(Easy1Msg(5, "华墨瑶", "2016年11月16日", R.drawable.hmy, "河南"))
-            infolist.add(Easy1Msg(6, "党春芸", "2015年9月3日", R.drawable.dcy, "蔚县桃花镇鸭涧村桥北"))
-
-
+        val pList = getPersonListB()
+        for(p in pList){
+            infolist.add(Easy1Msg(p.pid,p.name,p.date,p.image[0],p.location))
         }
+    }
 
+    private fun getPersonListB():ArrayList<Person>{
+        //连接数据库
+        //查询A表信息，返回Person列表
+        return Data.B_List
     }
 }

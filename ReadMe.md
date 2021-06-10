@@ -15,16 +15,16 @@ This is an android App which engages in helping people find their lost family.
 + 我的信息界面 (ui)myinfo文件夹 fragment_info/MyinfoFragment     √
 + 广场详情页1（jump from广场）activity_a_detail/aDetailActivity       √
 + 广场详情页2 (jump from广场）activity_b_detail/bDetailActivity      √
-+ 提交公告1（jump from公告）【未完成】activity_submit1/Submit1Activity
-+ 提交公告2（jump from公告）【未做】(文件未创建)
++ 提交公告1（jump from公告）activity_submit1/Submit1Activity        √
++ 提交公告2（jump from公告）activity_submit2/Submit2Activity        √
 + 我的信息界面(jump from我的)【未完成】(mydetail文件夹)activity_my_detail/MyDetailActivity      ×
 + 我的寻人信息页面(jump from我的)(myfind文件夹)activity_myfind/MyFindActivity        √
    + 寻人信息详情页面(jump from 我的寻人信息页面) activity_my_find_detail/MyFindDetailActivity √
-+ 我的寻亲信息界面(jump from我的)(myrelative文件夹)【未做】
-  + 寻亲信息详情页面(jump from 我的寻亲信息页面)【未做】
-+ 我提供的有关线索界面(jump from我的)【未做】
-+ 匹配结果有关页面(jump from 寻人/寻亲页面) activity_match_result/MatchResultActivity
-+ 帮助界面(jump from我的)【未做】
++ 我的寻亲信息界面(jump from我的)(myrelative文件夹) activity_my_relative/MyRelativeActivity      √
+  + 寻亲信息详情页面(jump from 我的寻亲信息页面)activity_my_relative_detail/MyRelativeDetailActivity
++ 我提供的有关线索界面(jump from我的) activity_my_clue/MyClueActivity       √
++ 匹配结果有关页面(jump from 寻人/寻亲页面) activity_match_result/MatchResultActivity     √
++ 帮助界面(jump from我的)     ×
 ------
 ## 流程
 1. 进入登录界面

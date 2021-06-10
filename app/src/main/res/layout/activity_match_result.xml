@@ -165,7 +165,7 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/myresult_status"
+                            android:id="@+id/presult_status"
                             android:layout_width="60dp"
                             android:layout_height="30dp"
                             android:layout_marginLeft="3dp"
