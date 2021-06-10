@@ -52,15 +52,15 @@ class MyClueActivity : AppCompatActivity() {
     private fun initInfo() {
         //加载recycleview中的信息 我的寻人信息
         repeat(2) {
-            infolist.add(myfindMsg("李海鹏", "2013年1月12日", R.drawable.lhp, "黑龙江省八五七农场25连", -1))
-            infolist.add(myfindMsg("刘冬良", "2018年4月29日", R.drawable.ldl, "东莞塘厦", 0))
-            infolist.add(myfindMsg("彭菁", "2015年12月10日", R.drawable.pq, "常德市武陵区黄溪堰七组", 1))
+            infolist.add(myfindMsg(1,"李海鹏", "2013年1月12日", R.drawable.lhp, "黑龙江省八五七农场25连", -1))
+            infolist.add(myfindMsg(2,"刘冬良", "2018年4月29日", R.drawable.ldl, "东莞塘厦", 0))
+            infolist.add(myfindMsg(3,"彭菁", "2015年12月10日", R.drawable.pq, "常德市武陵区黄溪堰七组", 1))
         }
         //加载recycleview2中的信息 我的寻亲信息
         repeat(2){
-            infolist2.add(myfindMsg("卿政庭", "2015年2月10日", R.drawable.qzt, "合川",1))
-            infolist2.add(myfindMsg("覃钦颢", "2014年12月14日", R.drawable.qqh, "石门县壶瓶山镇后路坪村5组",-1))
-            infolist2.add(myfindMsg("王梦芸", "2016年3月30日", R.drawable.wmy, "云南省曲靖市",0))
+            infolist2.add(myfindMsg(1,"卿政庭", "2015年2月10日", R.drawable.qzt, "合川",1))
+            infolist2.add(myfindMsg(2,"覃钦颢", "2014年12月14日", R.drawable.qqh, "石门县壶瓶山镇后路坪村5组",-1))
+            infolist2.add(myfindMsg(3,"王梦芸", "2016年3月30日", R.drawable.wmy, "云南省曲靖市",0))
 
 
         }

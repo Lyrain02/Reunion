@@ -47,11 +47,11 @@ class MyRelativeActivity : AppCompatActivity() {
     private fun initInfo() {
         //加载recycleview中的信息
         repeat(2){
-            infolist.add(myfindMsg("卿政庭", "2015年2月10日", R.drawable.qzt, "合川",1))
-            infolist.add(myfindMsg("覃钦颢", "2014年12月14日", R.drawable.qqh, "石门县壶瓶山镇后路坪村5组",-1))
-            infolist.add(myfindMsg("王梦芸", "2016年3月30日", R.drawable.wmy, "云南省曲靖市",0))
-            infolist.add(myfindMsg("姜信轩", "1994年", R.drawable.jxx, "不清楚",1))
-            infolist.add(myfindMsg("华墨瑶", "2016年11月16日", R.drawable.hmy, "河南",-1))
+            infolist.add(myfindMsg(1,"卿政庭", "2015年2月10日", R.drawable.qzt, "合川",1))
+            infolist.add(myfindMsg(2,"覃钦颢", "2014年12月14日", R.drawable.qqh, "石门县壶瓶山镇后路坪村5组",-1))
+            infolist.add(myfindMsg(3,"王梦芸", "2016年3月30日", R.drawable.wmy, "云南省曲靖市",0))
+            infolist.add(myfindMsg(4,"姜信轩", "1994年", R.drawable.jxx, "不清楚",1))
+            infolist.add(myfindMsg(5,"华墨瑶", "2016年11月16日", R.drawable.hmy, "河南",-1))
 
         }
     }

@@ -1,6 +1,6 @@
 package com.example.mytest.utils
 
-import com.example.mytest.user.User
+import com.example.mytest.user.Data
 
 class Test {
 
@@ -17,12 +17,9 @@ private fun refreshCheckCode():String{
 
 
 private fun main(){
-//    println(refreshCheckCode())
-//    println("User's id is ${User.id}, name is ${User.name}")
-//    User.login(5,"Jack")
-//    println("User's id is ${User.id}, name is ${User.name}")
-//    User.logout()
-//    println("User's id is ${User.id}, name is ${User.name}")
-//    User.login(2,"Sam")
-//    println("User's id is ${User.id}, name is ${User.name}")
+//    Data.init()
+    val p = Data.A_List
+    for(i in p){
+        println("id is ${i.pid}, name is ${i.name}")
+    }
 }
