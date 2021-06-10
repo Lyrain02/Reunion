@@ -16,6 +16,8 @@ import com.example.mytest.R
 import com.example.mytest.initialActivity
 import com.example.mytest.ui.squareDetail.aDetailActivity
 import com.example.mytest.ui.squareDetail.bDetailActivity
+import com.example.mytest.user.Data
+import com.example.mytest.user.Person
 
 
 class FirstFragment : Fragment() {
@@ -81,14 +83,16 @@ class FirstFragment : Fragment() {
     }
 
     private fun initInfo() {
-        repeat(2){
-            infolist.add(Easy1Msg(1,"李海鹏","2013年1月12日",R.drawable.lhp,"黑龙江省八五七农场25连"))
-            infolist.add(Easy1Msg(2,"刘冬良","2018年4月29日",R.drawable.ldl,"东莞塘厦"))
-            infolist.add(Easy1Msg(3,"彭菁","2015年12月10日",R.drawable.pq,"常德市武陵区黄溪堰七组"))
-            infolist.add(Easy1Msg(4,"杨群燕","1995年",R.drawable.yqy,"湖南省湘西州凤凰县"))
-            infolist.add(Easy1Msg(5,"于晓香","2004年3月7日",R.drawable.yxx,"山东潍坊"))
-            infolist.add(Easy1Msg(6,"张军","2001年9月3日",R.drawable.zj,"成都"))
+        val pList = getPersonListA()
+        for(p in pList){
+            infolist.add(Easy1Msg(p.pid,p.name,p.date,p.image[0],p.location))
         }
+    }
+
+    private fun getPersonListA():ArrayList<Person>{
+        //连接数据库
+        //查询A表信息，返回Person列表
+        return Data.A_List
     }
 
 }

@@ -111,7 +111,4 @@ class MatchResultActivity : AppCompatActivity() {
         //返回ArrayList<Person>
         return Data.A_List
     }
-
-
-
 }
