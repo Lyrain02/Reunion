@@ -23,8 +23,8 @@ This is an android App which engages in helping people find their lost family.
 + 我的寻亲信息界面(jump from我的)(myrelative文件夹) activity_my_relative/MyRelativeActivity      √
   + 寻亲信息详情页面(jump from 我的寻亲信息页面)activity_my_relative_detail/MyRelativeDetailActivity
 + 我提供的有关线索界面(jump from我的) activity_my_clue/MyClueActivity       √
-+ 匹配结果有关页面(jump from 寻人/寻亲页面) activity_match_result/MatchResultActivity
-+ 帮助界面(jump from我的)【未做】
++ 匹配结果有关页面(jump from 寻人/寻亲页面) activity_match_result/MatchResultActivity     √
++ 帮助界面(jump from我的)     ×
 ------
 ## 流程
 1. 进入登录界面
