@@ -83,21 +83,50 @@ class loginActivity : AppCompatActivity() {
     }
 
     private fun isUserValid(name: String):Boolean{
+        var signIn =0
+        val t=Thread(Runnable {
+            signIn = Util.sign_in(name,"xxxxxx")
+        })
+        t.start()
+        t.join()
+        if(signIn==404){
+            return false
+        }
         //在数据库中查询用户名
         //若存在，返回true；否则，返回false
         return true
     }
 
     private fun isPasswordValid(name:String,pwd:String):Boolean{
-        //在数据库中查询用户名和密码是否匹配
-        //若匹配，返回true；否则，返回false
+        var signIn =0
+        val t=Thread(Runnable {
+            signIn = Util.sign_in(name,pwd)
+        })
+        t.start()
+        t.join()
+        if(signIn!=200){
+            return false
+        }
+        //在数据库中查询用户名
+        //若存在，返回true；否则，返回false
         return true
     }
 
-    private fun getUserId(name:String):Int{
+    private fun getUserId(name:String):String{
+        var id=""
+        val t=Thread(Runnable {
+            val signIn = Util.get_user_id(name)
+            if (signIn == null){
+                id=""
+            }else{
+                id= signIn["_id"].toString()
+            }
+        })
+        t.start()
+        t.join()
         //在数据库中，通过用户名，查询用户id
         //-1表示失败，0为测试用户，1以上为真实用户
-        return 0
+        return id
     }
 
     private fun refreshCheckCode():String{

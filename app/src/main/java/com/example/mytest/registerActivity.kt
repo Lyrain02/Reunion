@@ -1,15 +1,11 @@
 package com.example.mytest
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.Window
 import android.widget.*
 import com.example.mytest.user.User
-import org.w3c.dom.Text
 
 class registerActivity : AppCompatActivity() {
     private val tag = "registerActivity"
@@ -73,7 +69,7 @@ class registerActivity : AppCompatActivity() {
             return false
         }
         val id = insertUser(username,pwd1)
-        if(id < 0){
+        if(id == ""){
             Toast.makeText(this,"注册失败！", Toast.LENGTH_SHORT).show()
             clearCheckCode(viewHolder.inputCode,viewHolder.checkCode)
             return false
@@ -82,11 +78,23 @@ class registerActivity : AppCompatActivity() {
         return true
     }
 
-    private fun insertUser(username: String,pw:String):Int{
+    private fun insertUser(username: String,pw:String):String{
+        var res =""
+        val t=Thread(Runnable {
+            val signUp = Util.sign_up(username,pw)
+            println(signUp)
+            if(signUp==404){
+                res=""
+            }else{
+                res= Util.get_user_id(username)["_id"].toString()
+            }
+        })
+        t.start()
+        t.join()
         //更新数据库
         //将用户命和密码插入数据库,获取用户id
         //-1表示失败，0为测试用户，1以上为真实用户
-        return 0
+        return res
     }
 
     private fun refreshCheckCode():String{
