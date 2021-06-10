@@ -3,7 +3,6 @@ package com.example.mytest.ui.squareDetail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -11,13 +10,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.mytest.R
-import com.example.mytest.ui.square.Easy1Msg
 import com.example.mytest.user.Person
-import com.example.mytest.user.SavePerson
 import com.example.mytest.user.User
-import java.lang.StringBuilder
 
 class bDetailActivity : AppCompatActivity() {
     val tag = "bDetailActivity"
@@ -100,9 +95,20 @@ class bDetailActivity : AppCompatActivity() {
     private fun initPerson(pid:Int, viewHolder: ViewHolder){
         //数据库连接 p_id查询信息
         //初始化人物+救助信息
-        val person = Person("姜宁康","上海市","2010年1月17日","30-40岁","男性",
-                "A型","1米8","60kg","英俊潇洒","非常好的一个人")
-        val sPerson = SavePerson("华东师范大学","86-21-62233333","上海市普陀区中山北路3663号")
+        val person = Person()
+        person.name = "李华"
+        person.location = "上海市"
+        person.date = "2010年1月17日"
+        person.age ="30-40岁"
+        person.sex = Person.SEX_MALE
+        person.blood = Person.BLOOD_A
+        person.height = "1米8"
+        person.weight = "60kg"
+        person.appearance = "英俊潇洒"
+        person.other ="他人很好"
+        person.s_name = "华东师范大学"
+        person.s_phone = "86-21-62233333"
+        person.s_address = "上海市普陀区中山北路3663号"
 
         viewHolder.p_name.text = person.name
         viewHolder.p_location.text =person.location
@@ -115,9 +121,9 @@ class bDetailActivity : AppCompatActivity() {
         viewHolder.p_appearance.text = person.appearance
         viewHolder.p_other.text = person.other
 
-        viewHolder.s_name.text =sPerson.name
-        viewHolder.s_tel.text = sPerson.tel
-        viewHolder.s_address.text = sPerson.address
+        viewHolder.s_name.text = person.s_name
+        viewHolder.s_tel.text = person.s_phone
+        viewHolder.s_address.text = person.s_address
 
         initImages()
         initClue()

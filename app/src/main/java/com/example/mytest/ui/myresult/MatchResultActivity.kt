@@ -48,12 +48,12 @@ class MatchResultActivity : AppCompatActivity() {
     private fun initInfo() {
         //加载recycleview中的信息
         repeat(2){
-            infolist.add(myfindMsg("李海鹏","2013年1月12日",R.drawable.lhp,"黑龙江省八五七农场25连",-1))
-            infolist.add(myfindMsg("刘冬良","2018年4月29日",R.drawable.ldl,"东莞塘厦",0))
-            infolist.add(myfindMsg("彭菁","2015年12月10日",R.drawable.pq,"常德市武陵区黄溪堰七组",1))
-            infolist.add(myfindMsg("杨群燕","1995年",R.drawable.yqy,"湖南省湘西州凤凰县",0))
-            infolist.add(myfindMsg("于晓香","2004年3月7日",R.drawable.yxx,"山东潍坊",-1))
-            infolist.add(myfindMsg("张军","2001年9月3日",R.drawable.zj,"成都",0))
+            infolist.add(myfindMsg(1,"李海鹏","2013年1月12日",R.drawable.lhp,"黑龙江省八五七农场25连",-1))
+            infolist.add(myfindMsg(2,"刘冬良","2018年4月29日",R.drawable.ldl,"东莞塘厦",0))
+            infolist.add(myfindMsg(3,"彭菁","2015年12月10日",R.drawable.pq,"常德市武陵区黄溪堰七组",1))
+            infolist.add(myfindMsg(4,"杨群燕","1995年",R.drawable.yqy,"湖南省湘西州凤凰县",0))
+            infolist.add(myfindMsg(5,"于晓香","2004年3月7日",R.drawable.yxx,"山东潍坊",-1))
+            infolist.add(myfindMsg(6,"张军","2001年9月3日",R.drawable.zj,"成都",0))
 
 
         }
@@ -76,13 +76,13 @@ class MatchResultActivity : AppCompatActivity() {
         }
         myfindlinearlayout.removeAllViews()
         repeat(2) {
-            initview(view, myfindMsg("李海鹏", "2013年1月12日", R.drawable.lhp, "黑龙江省八五七农场25连", 0))
+            initview(view, myfindMsg(1,"李海鹏", "2013年1月12日", R.drawable.lhp, "黑龙江省八五七农场25连", 0))
             myfindlinearlayout.addView(view)
-            initview(view, myfindMsg("刘冬良", "2018年4月29日", R.drawable.ldl, "东莞塘厦", 1))
+            initview(view, myfindMsg(2,"刘冬良", "2018年4月29日", R.drawable.ldl, "东莞塘厦", 1))
             myfindlinearlayout.addView(view)
-            initview(view, myfindMsg("彭菁", "2015年12月10日", R.drawable.pq, "常德市武陵区黄溪堰七组", -1))
+            initview(view, myfindMsg(3,"彭菁", "2015年12月10日", R.drawable.pq, "常德市武陵区黄溪堰七组", -1))
             myfindlinearlayout.addView(view)
-            initview(view, myfindMsg("杨群燕", "1995年", R.drawable.yqy, "湖南省湘西州凤凰县", 0))
+            initview(view, myfindMsg(4,"杨群燕", "1995年", R.drawable.yqy, "湖南省湘西州凤凰县", 0))
             myfindlinearlayout.addView(view)
         }
 
