@@ -9,12 +9,12 @@ This is an android App which engages in helping people find their lost family.
 + 主页面整体（包括下面的tab navigation）activity_main/MainActivity      √
 + 广场页面：(ui)square文件夹 fragment_square/SquareFragment     √
   + 根据上面的tablayout分为广场A和广场B
-  + 广场A页面：fragment_first/FirstFragment
-  + 广场B界面：fragment_second/SecondActivity
-+ 发布公告界面 (ui)send文件夹 fragment_send/SendFragment【未完成】
-+ 我的信息界面 (ui)myinfo文件夹 fragment_info/MyinfoFragment【未完成】
-+ 广场详情页1（jump from广场）【未做】activity_a_detail/aDetailActivity
-+ 广场详情页2 (jump from广场)【未做】activity_b_detail/bDetailActivity
+  + 广场A页面：fragment_first/FirstFragment       √
+  + 广场B界面：fragment_second/SecondActivity         √
++ 发布公告界面 (ui)send文件夹 fragment_send/SendFragment      √
++ 我的信息界面 (ui)myinfo文件夹 fragment_info/MyinfoFragment     √
++ 广场详情页1（jump from广场）activity_a_detail/aDetailActivity       √
++ 广场详情页2 (jump from广场）activity_b_detail/bDetailActivity      √
 + 提交公告1（jump from公告）【未完成】activity_submit1/Submit1Activity
 + 提交公告2（jump from公告）【未做】(文件未创建)
 + 我的信息界面(jump from我的)【未完成】(mydetail文件夹)activity_my_detail/MyDetailActivity

@@ -1,4 +1,4 @@
-package com.example.mytest.ui.myclue
+package com.example.mytest.ui.Myclue
 
 import android.util.Log
 import android.view.LayoutInflater

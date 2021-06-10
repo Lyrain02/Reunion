@@ -1,6 +1,5 @@
-package com.example.mytest.ui.myclue
+package com.example.mytest.ui.Myclue
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.mytest.MainActivity
 import com.example.mytest.R
 import com.example.mytest.ui.myfind.myfindMsg
 
