@@ -11,6 +11,7 @@
         android:theme="@style/Theme.MyTest">
         <activity android:name=".ui.squareDetail.bDetailActivity"></activity>
         <activity android:name=".ui.Myclue.MyClueActivity" />
+        <activity android:name=".ui.myresult.MatchResultActivity"></activity>
         <activity android:name=".ui.submit.Submit2Activity" />
         <activity android:name=".ui.myrelative.MyRelativeActivity" />
         <activity android:name=".ui.squareDetail.aDetailActivity" />
@@ -27,7 +28,6 @@
             android:fitsSystemWindows="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

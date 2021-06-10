@@ -16,12 +16,10 @@
         android:background="@color/sun"
         android:orientation="horizontal">
 
-        <ImageView
+        <com.example.mytest.ui.icon.BackLayout
             android:id="@+id/back_myfind"
             android:layout_width="60dp"
             android:layout_height="56dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
             android:src="@drawable/back" />
 
         <TextView
@@ -32,7 +30,6 @@
             android:text="我的寻人信息"
             android:textColor="@color/white"
             android:textSize="20dp" />
-
 
 
     </LinearLayout>

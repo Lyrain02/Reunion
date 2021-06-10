@@ -123,10 +123,18 @@ class bDetailActivity : AppCompatActivity() {
         initClue()
     }
 
-    private fun submitClueB(clue: String):Boolean{
+    private fun submitClueB(clue: String?):Boolean{
+        Log.d(tag,"submit func!")
         //提交线索+表id+用户id
         //调用submitclue（uid，tid，clue）
-        return true
+        return if(clue!=null) {
+            clueList.add(Clue(User.name, R.drawable.eg_boy, "2021年6月11日", clue?:""))
+            Log.d(tag,"submit successful")
+            true
+        }else{
+            Log.d(tag,"submit failure")
+            false
+        }
     }
 
     private fun showInput():String? {
@@ -137,7 +145,8 @@ class bDetailActivity : AppCompatActivity() {
                         "确定"
                 ) { dialogInterface, i ->
                     msg = editText.text.toString().trim()
-                    Log.d(tag,"submit clue: $msg")
+                    Log.d(tag,"clue is $msg")
+                    submitClueB(msg)
                 }
         builder.create().show()
         return msg
