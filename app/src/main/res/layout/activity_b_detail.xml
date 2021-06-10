@@ -480,7 +480,7 @@
                             android:textStyle="bold"/>
                     </LinearLayout>
                     <TextView
-                        android:id="@+id/p_pdate"
+                        android:id="@+id/p_pdateB"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -525,7 +525,7 @@
                             android:textStyle="bold"/>
                     </LinearLayout>
                     <TextView
-                        android:id="@+id/p_state"
+                        android:id="@+id/p_stateB"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

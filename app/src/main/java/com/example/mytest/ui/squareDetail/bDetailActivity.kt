@@ -11,7 +11,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mytest.R
+import com.example.mytest.user.Data
 import com.example.mytest.user.Person
+import com.example.mytest.user.PersonClue
 import com.example.mytest.user.User
 
 class bDetailActivity : AppCompatActivity() {
@@ -19,6 +21,8 @@ class bDetailActivity : AppCompatActivity() {
     private val imageList = ArrayList<Int>()
     private val clueList = ArrayList<Clue>()
     private lateinit var viewHolder:ViewHolder
+    private var pid = 0
+    private lateinit var person:Person
 
     inner class ViewHolder{
         val p_name = findViewById<TextView>(R.id.p_nameB)
@@ -31,9 +35,11 @@ class bDetailActivity : AppCompatActivity() {
         val p_weight = findViewById<TextView>(R.id.p_weightB)
         val p_appearance = findViewById<TextView>(R.id.p_appearanceB)
         val p_other = findViewById<TextView>(R.id.p_otherB)
-        val s_name = findViewById<TextView>(R.id.s_name)
-        val s_tel = findViewById<TextView>(R.id.s_tel)
-        val s_address = findViewById<TextView>(R.id.s_address)
+        val p_status = findViewById<TextView>(R.id.p_stateB)
+        val p_pdate = findViewById<TextView>(R.id.p_pdateB)
+        val l_name = findViewById<TextView>(R.id.s_name)
+        val l_tel = findViewById<TextView>(R.id.s_tel)
+        val l_address = findViewById<TextView>(R.id.s_address)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +50,7 @@ class bDetailActivity : AppCompatActivity() {
         val viewHolder = ViewHolder()
 
         val bundle = intent.extras
-        val pid = bundle?.getInt("pid") ?:0
+        pid = bundle?.getInt("pid") ?:0 //???????????
         Log.d(tag,"person's id is $pid")
 
         initPerson(pid,viewHolder)
@@ -62,53 +68,30 @@ class bDetailActivity : AppCompatActivity() {
         val clueAdapter = ClueAdapter(clueList)
         recyclerView2.adapter =clueAdapter
 
+
+
         val submitClueB = findViewById<Button>(R.id.submintClueB)
         submitClueB.setOnClickListener {
-            val clue = showInput()
-            if(clue!=null){
-                if(submitClueB(clue))
-                    Toast.makeText(this,"Submit Successfully!",Toast.LENGTH_LONG).show()
-                else
-                    Toast.makeText(this,"Submit failure!",Toast.LENGTH_LONG).show()
-            }
+            showInput()
         }
 
     }
-    private fun initImages() {
-        //数据库连接
-        repeat(1){
-            imageList.add((R.drawable.lhp))
-            imageList.add((R.drawable.ldl))
-            imageList.add((R.drawable.pq))
-            imageList.add((R.drawable.yqy))
-            imageList.add((R.drawable.yxx))
-            imageList.add((R.drawable.zj))
+
+    private fun initImages(images: ArrayList<Int>) {
+        for(i in images){
+            imageList.add(i)
         }
     }
-    private fun initClue(){
-        //数据库连接
-        repeat(1){
-            clueList.add(Clue("Sam",R.drawable.eg_boy,"2020年10月11日","两周前曾经在长风公园湖边看到他"))
-            clueList.add(Clue("Alice",R.drawable.eg_girl,"2021年1月11日","似乎在中山公园地铁站附近见到过他"))
+
+    private fun initClue(pid:Int){
+        val pclues = getPersonClueB(pid)
+        for(i in pclues){
+            clueList.add(Clue(getUserName(i.uid),getUserImage(i.uid),i.date,i.msg))
         }
     }
+
     private fun initPerson(pid:Int, viewHolder: ViewHolder){
-        //数据库连接 p_id查询信息
-        //初始化人物+救助信息
-        val person = Person()
-        person.name = "李华"
-        person.location = "上海市"
-        person.date = "2010年1月17日"
-        person.age ="30-40岁"
-        person.sex = Person.SEX_MALE
-        person.blood = Person.BLOOD_A
-        person.height = "1米8"
-        person.weight = "60kg"
-        person.appearance = "英俊潇洒"
-        person.other ="他人很好"
-        person.s_name = "华东师范大学"
-        person.s_phone = "86-21-62233333"
-        person.s_address = "上海市普陀区中山北路3663号"
+        person = getPersonInfoB(pid)
 
         viewHolder.p_name.text = person.name
         viewHolder.p_location.text =person.location
@@ -120,23 +103,32 @@ class bDetailActivity : AppCompatActivity() {
         viewHolder.p_weight.text = person.weight
         viewHolder.p_appearance.text = person.appearance
         viewHolder.p_other.text = person.other
+        viewHolder.p_pdate.text = person.pdate
+        viewHolder.p_status.text = when(person.status){
+            -1 -> "已撤回"
+            0 -> "未找到"
+            1 -> "已找到"
+            else -> "Error"
+        }
+        viewHolder.l_name.text =person.s_name
+        viewHolder.l_tel.text = person.s_phone
+        viewHolder.l_address.text = person.s_address
 
-        viewHolder.s_name.text = person.s_name
-        viewHolder.s_tel.text = person.s_phone
-        viewHolder.s_address.text = person.s_address
-
-        initImages()
-        initClue()
+        initImages(person.image)
+        initClue(pid)
     }
 
     private fun submitClueB(clue: String?):Boolean{
         Log.d(tag,"submit func!")
-        //提交线索+表id+用户id
-        //调用submitclue（uid，tid，clue）
         return if(clue!=null) {
-            clueList.add(Clue(User.name, R.drawable.eg_boy, "2021年6月11日", clue?:""))
-            Log.d(tag,"submit successful")
-            true
+            val pclue = PersonClue(pid,User.id,getCurrentTime(),clue)
+            if(clue.length!=0 && addClueB(pclue)) {
+                Data.A_List[pid].clues.add(pclue)//本地存储
+                Data.my_ListClueA.add(person)//本地存储
+                clueList.add(Clue(getUserName(pclue.pid), getUserImage(pclue.pid), getCurrentTime(), clue ?: ""))
+                Log.d(tag,"submit successful")
+                true
+            }else false
         }else{
             Log.d(tag,"submit failure")
             false
@@ -147,14 +139,54 @@ class bDetailActivity : AppCompatActivity() {
         val editText = EditText(this)
         var msg:String?=null
         val builder = AlertDialog.Builder(this).setTitle("请输入线索：").setView(editText)
-                .setPositiveButton(
-                        "确定"
-                ) { dialogInterface, i ->
-                    msg = editText.text.toString().trim()
-                    Log.d(tag,"clue is $msg")
-                    submitClueB(msg)
-                }
+            .setPositiveButton(
+                "确定"
+            ) { dialogInterface, i ->
+                msg = editText.text.toString().trim()
+                Log.d(tag,"clue is $msg")
+                if(submitClueB(msg))
+                    Toast.makeText(this.applicationContext,"提交成功",Toast.LENGTH_LONG).show()
+                else
+                    Toast.makeText(this.applicationContext,"提交失败",Toast.LENGTH_LONG).show()
+            }
         builder.create().show()
         return msg
+    }
+
+
+    private fun addClueB(pclue: PersonClue):Boolean{
+        //连接数据库[A表]
+        //将PersonClue上传到数据库
+        return true
+    }
+
+    private fun getPersonInfoB(pid:Int):Person{
+        //连接数据库 [A表]
+        //[A表]给定pid，获取人员信息，返回类型为Person
+        return Data.B_List[pid]
+    }
+
+    private fun getPersonClueB(pid:Int):ArrayList<PersonClue>{
+        //数据库连接 [A表]
+        //[A表]给定pid，获取clue的列表，返回值为ArrayList<PersonClue>
+        return Data.B_List[pid].clues
+    }
+
+    private fun getUserName(uid:Int):String{
+        //连接数据库
+        //通过用户id获取用户名
+        return Data.userList[uid].name
+    }
+
+    private fun getUserImage(uid:Int):Int{
+        //连接数据库
+        //通过用户id获取用户头像
+        return Data.userList[uid].image
+    }
+
+    private fun getCurrentTime():String{
+        //非数据库连接部分，可以暂时不实现
+        //获取发布时间
+        return "2021年6月11日"
     }
 }
