@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: liji.library.dev:citypickerview:0.7.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2c60b86faa7158ce1fbb05e468c3ab28/jetified-citypickerview-0.7.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2c60b86faa7158ce1fbb05e468c3ab28/jetified-citypickerview-0.7.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2c60b86faa7158ce1fbb05e468c3ab28/jetified-citypickerview-0.7.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc9906f4c77c79559d80d15049cc05e2/jetified-citypickerview-0.7.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc9906f4c77c79559d80d15049cc05e2/jetified-citypickerview-0.7.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc9906f4c77c79559d80d15049cc05e2/jetified-citypickerview-0.7.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/liji.library.dev/citypickerview/0.7.0/2309442c23d23a1e7702eef1307e792e4e9c2a01/citypickerview-0.7.0-javadoc.jar!/" />
