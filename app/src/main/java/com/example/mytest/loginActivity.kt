@@ -91,6 +91,7 @@ class loginActivity : AppCompatActivity() {
     private fun isPasswordValid(name:String,pwd:String):Boolean{
         //在数据库中查询用户名和密码是否匹配
         //若匹配，返回true；否则，返回false
+
         return true
     }
 
