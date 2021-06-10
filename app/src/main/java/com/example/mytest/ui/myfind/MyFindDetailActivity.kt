@@ -77,6 +77,7 @@ class MyFindDetailActivity : AppCompatActivity() {
         matchA.setOnClickListener {
             val intent  = Intent(this,MatchResultActivity::class.java)
             intent.putExtra("pid",pid)
+            intent.putExtra("table","A")
             startActivity(intent)
         }
 
@@ -94,14 +95,14 @@ class MyFindDetailActivity : AppCompatActivity() {
     }
 
     private fun initClue(pid:Int){
-        val pclues = getPersonClue(pid)
+        val pclues = getPersonClueA(pid)
         for(i in pclues){
             clueList.add(Clue(getUserName(i.uid),getUserImage(i.uid),i.date,i.msg))
         }
     }
 
     private fun initPerson(pid:Int, viewHolder: ViewHolder){
-        val person = getPersonInfo(pid)
+        val person = getPersonInfoA(pid)
 
         viewHolder.p_name.text = person.name
         viewHolder.p_location.text =person.location
@@ -128,14 +129,14 @@ class MyFindDetailActivity : AppCompatActivity() {
         initClue(pid)
     }
 
-    private fun getPersonInfo(pid:Int):Person{
-        //连接数据库
+    private fun getPersonInfoA(pid:Int):Person{
+        //连接数据库 [A表]
         //[A表]给定pid，获取人员信息，返回类型为Person
         return Data.A_List[pid]
     }
 
-    private fun getPersonClue(pid:Int):ArrayList<PersonClue>{
-        //数据库连接
+    private fun getPersonClueA(pid:Int):ArrayList<PersonClue>{
+        //数据库连接 [A表]
         //[A表]给定pid，获取clue的列表，返回值为ArrayList<PersonClue>
         return Data.A_List[pid].clues
     }
@@ -163,7 +164,7 @@ class MyFindDetailActivity : AppCompatActivity() {
                 DialogInterface.OnClickListener { dialogInterface, i ->
                     if (choice !== -1) {
                         val status = choice-1
-                        updateStatus(pid,status)//数据库修改
+                        updateStatusA(pid,status)//数据库修改
                         Data.A_List[pid].status = status //本地修改
                         Toast.makeText(this, "状态修改为： ${items[choice]}", Toast.LENGTH_LONG).show()
                     }
@@ -171,8 +172,8 @@ class MyFindDetailActivity : AppCompatActivity() {
         builder.create().show()
     }
 
-    private fun updateStatus(pid:Int,status: Int):Boolean{
-        //连接数据库
+    private fun updateStatusA(pid:Int,status: Int):Boolean{
+        //连接数据库 [A表]
         //提供pid，status；将状态修改为status
         return true
     }

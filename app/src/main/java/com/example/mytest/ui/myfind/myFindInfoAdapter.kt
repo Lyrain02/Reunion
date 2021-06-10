@@ -46,8 +46,7 @@ class myFindInfoAdapter (val infolist:List<myfindMsg>) : RecyclerView.Adapter<my
         holder.pname.text=info.name
         holder.pplace.text=info.place
         holder.pdate.text=info.datetime
-        val kk:Int = info.status
-        when(kk){
+        when(info.status){
             0 -> holder.pstatus.text = "未找到"
             -1 -> holder.pstatus.text= "已撤回"
             1 -> holder.pstatus.text = "已找到"

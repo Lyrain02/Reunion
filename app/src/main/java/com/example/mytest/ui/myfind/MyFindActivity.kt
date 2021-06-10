@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -20,6 +21,7 @@ import com.example.mytest.user.Person
 class MyFindActivity : AppCompatActivity() {
     private val tag = "MyFindActivity"
     val infoList = ArrayList<myfindMsg>()
+    lateinit var adapter:myFindInfoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +42,15 @@ class MyFindActivity : AppCompatActivity() {
     }
 
     private fun initInfo(uid:Int) {
-        val pList = getMyFindList(uid)
+        val pList = getMyFindListA(uid)
         for(p in pList){
             infoList.add(myfindMsg(p.pid,p.name,p.date,p.image[0],p.location,p.status))
         }
     }
 
-    private fun getMyFindList(uid :Int):ArrayList<Person>{
+    private fun getMyFindListA(uid :Int):ArrayList<Person>{
         //连接数据库
-        //给定用户uid,获取寻人列表
+        //给定用户uid,获取寻人列表[A表]
         //返回值为Person的列表
         return Data.my_ListA //本地数据
     }

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTest">
-        <activity android:name=".ui.myfind.MyFindDetailActivity"></activity>
+        <activity android:name=".ui.myrelative.MyRelativeDetailActivity"></activity>
+        <activity android:name=".ui.myfind.MyFindDetailActivity" />
         <activity android:name=".ui.squareDetail.bDetailActivity" />
         <activity android:name=".ui.Myclue.MyClueActivity" />
         <activity android:name=".ui.myresult.MatchResultActivity" />
