@@ -123,8 +123,9 @@ class bDetailActivity : AppCompatActivity() {
         return if(clue!=null) {
             val pclue = PersonClue(pid,User.id,getCurrentTime(),clue)
             if(clue.length!=0 && addClueB(pclue)) {
-                Data.A_List[pid].clues.add(pclue)//本地存储
-                Data.my_ListClueA.add(person)//本地存储
+                Data.B_List[pid].clues.add(pclue)//本地存储
+                if(person !in Data.my_ListClueB)
+                    Data.my_ListClueB.add(person)//本地存储
                 clueList.add(Clue(getUserName(pclue.pid), getUserImage(pclue.pid), getCurrentTime(), clue ?: ""))
                 Log.d(tag,"submit successful")
                 true
