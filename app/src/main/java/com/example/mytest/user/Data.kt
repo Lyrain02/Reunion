@@ -1,7 +1,5 @@
 package com.example.mytest.user
 
-import android.util.ArrayMap
-import android.util.ArraySet
 import com.example.mytest.R
 
 object Data {
