@@ -10,7 +10,6 @@ import android.view.Window
 import android.widget.*
 import com.example.mytest.user.User
 import org.w3c.dom.Text
-import java.util.*
 
 class registerActivity : AppCompatActivity() {
     private val tag = "registerActivity"
@@ -84,27 +83,10 @@ class registerActivity : AppCompatActivity() {
     }
 
     private fun insertUser(username: String,pw:String):Int{
-        var res =""
-        val t=Thread(Runnable {
-            val signUp = Util.sign_up(username,pw)
-            println(signUp)
-            if(signUp==404){
-                res=""
-            }else{
-                res= Util.get_user_id(username)["_id"].toString()
-            }
-        })
-        t.start()
-        t.join()
         //更新数据库
         //将用户命和密码插入数据库,获取用户id
         //-1表示失败，0为测试用户，1以上为真实用户
-        if(res==""){
-            return -1
-        }else{
-            println(res)
-            return Integer.parseInt("accccccccc",16)
-        }
+        return 0
     }
 
     private fun refreshCheckCode():String{
