@@ -80,12 +80,12 @@ class MyinfoFragment : Fragment() {
             User.log()
         }
 
-        /* 函数：我的信息页面跳转*/
-        intoMyinfo.setOnClickListener(){
-            val intent = Intent(activity, MatchResultActivity::class.java)
-            intent.putExtra("uid", User.id)
-            startActivity(intent)
-        }
+//        /* 函数：我的信息页面跳转*/
+//        intoMyinfo.setOnClickListener(){
+//            val intent = Intent(activity, MatchResultActivity::class.java)
+//            intent.putExtra("uid", User.id)
+//            startActivity(intent)
+//        }
        /* 函数：我的寻人信息页面跳转*/
         intoMyfind.setOnClickListener(){
             val intent = Intent(activity, MyFindActivity::class.java)

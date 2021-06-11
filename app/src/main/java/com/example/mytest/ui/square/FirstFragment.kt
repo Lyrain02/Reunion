@@ -34,7 +34,7 @@ class FirstFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        initInfo()
+        //initInfo()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
