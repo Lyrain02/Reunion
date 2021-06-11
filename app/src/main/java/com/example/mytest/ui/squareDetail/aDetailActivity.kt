@@ -128,7 +128,7 @@ class aDetailActivity : AppCompatActivity() {
             if(clue.length!=0 && addClueA(pclue)) {
                 Data.A_List[pid].clues.add(pclue)//本地存储
                 Data.my_ListClueA.add(person)//本地存储
-                clueList.add(Clue(getUserName(pclue.pid), getUserImage(pclue.pid), getCurrentTime(), clue ?: ""))
+                clueList.add(Clue(getUserName(pclue.uid), getUserImage(pclue.uid), getCurrentTime(), clue ?: ""))
                 Log.d(tag,"submit successful")
                 true
             }else false
