@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 //                .addToBackStack(null)
 //                .commit()
 //        }
-        Log.d(tag,"Welcome user ${User.name}")
+        Log.d(tag,"Welcome user ${User.name}, uid is ${User.id}")
 
     }
 }

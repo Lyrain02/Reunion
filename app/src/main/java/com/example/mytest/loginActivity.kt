@@ -6,7 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import com.example.mytest.user.Mode
 import com.example.mytest.user.User
+import com.example.mytest.utils.Local.getUserIdLocal
+import com.example.mytest.utils.Local.isPasswordValidLocal
+import com.example.mytest.utils.Local.isUserValidLocal
+import com.example.mytest.utils.Remote.getUserIdRemote
+import com.example.mytest.utils.Remote.isPasswordValidRemote
+import com.example.mytest.utils.Remote.isUserValidRemote
 
 class loginActivity : AppCompatActivity() {
     private val tag = "loginActivity"
@@ -82,24 +89,17 @@ class loginActivity : AppCompatActivity() {
         return true
     }
 
-    private fun isUserValid(name: String):Boolean{
-        //在数据库中查询用户名
-        //若存在，返回true；否则，返回false
-        return true
-    }
+    private fun isUserValid(username:String):Boolean
+    = if(Mode.isLocal()) isUserValidLocal(username)
+        else isUserValidRemote(username)
 
-    private fun isPasswordValid(name:String,pwd:String):Boolean{
-        //在数据库中查询用户名和密码是否匹配
-        //若匹配，返回true；否则，返回false
+    private fun isPasswordValid(username: String,pwd: String):Boolean
+    = if(Mode.isLocal()) isPasswordValidLocal(username,pwd)
+        else isPasswordValidRemote(username,pwd)
 
-        return true
-    }
-
-    private fun getUserId(name:String):Int{
-        //在数据库中，通过用户名，查询用户id
-        //-1表示失败，0为测试用户，1以上为真实用户
-        return 0
-    }
+    private fun getUserId(username:String):Int
+    = if(Mode.isLocal()) getUserIdLocal(username)
+    else getUserIdRemote(username)
 
     private fun refreshCheckCode():String{
         val strBuffer = StringBuffer()

@@ -1,15 +1,14 @@
 package com.example.mytest
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.Window
 import android.widget.*
+import com.example.mytest.user.Mode
 import com.example.mytest.user.User
-import org.w3c.dom.Text
+import com.example.mytest.utils.Local.insertUserLocal
+import com.example.mytest.utils.Remote.insertUserRemote
 
 class registerActivity : AppCompatActivity() {
     private val tag = "registerActivity"
@@ -72,7 +71,12 @@ class registerActivity : AppCompatActivity() {
             clearCheckCode(viewHolder.inputCode,viewHolder.checkCode)
             return false
         }
-        val id = insertUser(username,pwd1)
+        val id = if(Mode.isLocal()){
+            insertUserLocal(username,pwd1)
+        }else{
+            insertUserRemote(username,pwd1)
+        }
+
         if(id < 0){
             Toast.makeText(this,"注册失败！", Toast.LENGTH_SHORT).show()
             clearCheckCode(viewHolder.inputCode,viewHolder.checkCode)
@@ -82,12 +86,6 @@ class registerActivity : AppCompatActivity() {
         return true
     }
 
-    private fun insertUser(username: String,pw:String):Int{
-        //更新数据库
-        //将用户命和密码插入数据库,获取用户id
-        //-1表示失败，0为测试用户，1以上为真实用户
-        return 0
-    }
 
     private fun refreshCheckCode():String{
         val strBuffer = StringBuffer()
@@ -120,4 +118,5 @@ class registerActivity : AppCompatActivity() {
         pw1.text.delete(0,pw1.text.length)
         pw2.text.delete(0,pw2.text.length)
     }
+
 }

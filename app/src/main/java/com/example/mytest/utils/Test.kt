@@ -1,6 +1,7 @@
 package com.example.mytest.utils
 
 import com.example.mytest.user.Data
+import com.example.mytest.user.Mode
 
 class Test {
 
@@ -17,9 +18,6 @@ private fun refreshCheckCode():String{
 
 
 private fun main(){
-//    Data.init()
-    val p = Data.A_List
-    for(i in p){
-        println("id is ${i.pid}, name is ${i.name}")
-    }
+    Mode.getModeType()
+    print(Mode.isLocal())
 }

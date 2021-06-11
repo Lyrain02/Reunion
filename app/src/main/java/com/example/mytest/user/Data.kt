@@ -7,8 +7,7 @@ import com.example.mytest.R
 object Data {
     val tag = "Data"
 
-//    val userList = listOf("test","lyrain","system")
-//    val pwList = mapOf("lyrain" to "12345","test" to "12345", "system" to "12345")
+    //userList的index = uid
     val userList = ArrayList<TepUser>()
 
     val A_List = ArrayList<Person>()
@@ -500,10 +499,11 @@ object Data {
 }
 
 //本地使用
-class TepUser{
-    var id = -1
-    lateinit var name :String
-    var image = R.drawable.eg_boy
-    var status = User.AUTH_UNFINISHED
-    var pw ="12345"
+class TepUser(var id:Int =-1,var name:String="",var pw:String = "12345",
+              var image:Int=R.drawable.eg_boy, var status:String = User.AUTH_UNFINISHED){
+//    var id = -1
+//    lateinit var name :String
+//    var pw ="12345"
+//    var image = R.drawable.eg_boy
+//    var status = User.AUTH_UNFINISHED
 }
