@@ -3,25 +3,25 @@ package com.example.mytest.user
 class Person{
     var pid = 0
     val image = ArrayList<Int>()
-    var name:String = ""
-    var location:String = ""
-    var date: String = ""
-    var age :String=""
-    var birth:String=""
-    var sex:String=""
-    var blood:String=""
-    var height:String=""
-    var weight:String=""
-    var appearance:String=""
-    var other:String=""
+    var name:String = "暂缺"
+    var location:String = "暂缺"
+    var date: String = "暂缺"
+    var age :String="暂缺"
+    var birth:String="暂缺"
+    var sex:String="暂缺"
+    var blood:String="暂缺"
+    var height:String="暂缺"
+    var weight:String="暂缺"
+    var appearance:String="暂缺"
+    var other:String="暂缺"
     var status = Person.STATUS_LOST
-    var pdate:String = ""
+    var pdate:String = "2020年1月1日"
 
-    var s_name = ""
-    var s_phone = ""
-    var s_address = ""
-    var s_postcode = ""
-    var s_relative = ""
+    var s_name = "暂缺"
+    var s_phone = "暂缺"
+    var s_address = "暂缺"
+    var s_postcode = "暂缺"
+    var s_relative = "暂缺"
 
     //clues仅限本地使用，连接数据库时不需要该项
     val clues = ArrayList<PersonClue>()

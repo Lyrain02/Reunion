@@ -126,7 +126,7 @@ class bDetailActivity : AppCompatActivity() {
                 Data.B_List[pid].clues.add(pclue)//本地存储
                 if(person !in Data.my_ListClueB)
                     Data.my_ListClueB.add(person)//本地存储
-                clueList.add(Clue(getUserName(pclue.pid), getUserImage(pclue.pid), getCurrentTime(), clue ?: ""))
+                clueList.add(Clue(getUserName(pclue.uid), getUserImage(pclue.uid), getCurrentTime(), clue ?: ""))
                 Log.d(tag,"submit successful")
                 true
             }else false
