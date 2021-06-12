@@ -144,7 +144,7 @@ class Submit1Activity : AppCompatActivity() {
             person.pid = Data.A_List.size//本地存储
             Data.A_List.add(person)//本地存储，广场
             Data.my_ListA.add(person)//本地存储，个人发布
-            if(uploadPersonB(person)){
+            if(person.image.size!=0&&uploadPersonB(person)){
                 Toast.makeText(this.applicationContext,"提交成功",Toast.LENGTH_LONG).show()
                 finish()
             }else{
