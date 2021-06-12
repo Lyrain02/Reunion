@@ -130,15 +130,5 @@ public class Util {
         }
         return new Pair<String,Integer>(mesg,code);
     }
-
-    public static Map<String, String> get_user_id(String username){
-        Map<String, String> map = new HashMap<>();
-        map.put("username",username);
-        Pair<String, Integer> send = send(map2json(map), "/user/id");
-        if(send.second==404){
-            return null;
-        }
-        return json2map(send.first);
-    }
 }
 
