@@ -34,11 +34,12 @@ Mode类中通过Mode.type设置本地/远程存储方式
 ------
 ## 本地数据结构
 object Data {
-    val userList = ArrayList<TepUser>( )
+
+    val userList = ArrayList<TepUser>()
     
     val A_List = ArrayList<Person>()
     val B_List = ArrayList<Person>()
-
+    
     val my_ListA = ArrayList<Person>()
     val my_ListB = ArrayList<Person>()
     val my_ListClueA = ArrayList<Person>()
