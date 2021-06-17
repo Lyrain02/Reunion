@@ -17,7 +17,17 @@ import com.example.mytest.ui.Myclue.MyClueActivity
 import com.example.mytest.ui.myfind.MyFindActivity
 import com.example.mytest.ui.myrelative.MyRelativeActivity
 import com.example.mytest.ui.myresult.MatchResultActivity
+import com.example.mytest.user.Data
+import com.example.mytest.user.Mode
 import com.example.mytest.user.User
+import com.example.mytest.utils.Local.authentificationLocal
+import com.example.mytest.utils.Local.changeImageLocal
+import com.example.mytest.utils.Local.updateUserImageLocal
+import com.example.mytest.utils.Local.updateUserNameLocal
+import com.example.mytest.utils.Remote.authentificationRemote
+import com.example.mytest.utils.Remote.updateUserImageRemote
+import com.example.mytest.utils.Remote.updateUserNameRemote
+import com.example.mytest.utils.Remote.uploadImageRemote
 
 
 class MyinfoFragment : Fragment() {
@@ -53,17 +63,14 @@ class MyinfoFragment : Fragment() {
 
         /*修改头像*/
         myinfo_image.setOnClickListener {
-            //跳转至相册
-            //图片上传服务器
-            var image = R.drawable.eg_boy
-            if(User.image == R.drawable.eg_girl) {
-                image = R.drawable.eg_boy
-            }else if(User.image==R.drawable.eg_boy){
-                image = R.drawable.eg_girl
+            var image = uploadImage()  //获取头像照片
+            if(updateUserImage(User.id, image)) { //存储用户头像
+                myinfo_image.setImageResource(image)//显示
+                User.image = image //User更新
+                Toast.makeText(this.context,"更新成功",Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this.context,"更新失败",Toast.LENGTH_LONG).show()
             }
-
-            myinfo_image.setImageResource(image)//显示
-            User.image = image//本地存储
             User.log()
         }
         /*修改用户名*/
@@ -126,8 +133,8 @@ class MyinfoFragment : Fragment() {
                     Log.d(tag,"msg is $msg")
                     if(isNameValid(msg)){
                         if(updateUserName(User.id,msg?:User.name)){
-                            viewHolder.name.text=msg//显示
-                            User.name =msg?:User.name //本地存储
+                            viewHolder.name.text=msg //显示
+                            User.name = msg?:User.name //User更新
                             Toast.makeText(context, "修改成功", Toast.LENGTH_LONG).show()
                             User.log()
                         }else{
@@ -154,22 +161,33 @@ class MyinfoFragment : Fragment() {
 
     private fun isAuthFinished(uid:Int):Boolean{
         return if(User.auth==User.AUTH_UNFINISHED){
-            authentification(uid)
+            if(authentification(uid)){
+                User.auth = User.AUTH_FINISHED
+                true
+            }else{
+                false
+            }
         }else true
     }
 
-    private fun authentification(uid:Int):Boolean{
-        //认证接口
-        //认证结果上传数据库
-        return true
-    }
+    private fun authentification(uid:Int):Boolean
+    =if(Mode.isLocal()) authentificationLocal(uid)
+    else authentificationRemote(uid)
 
     private fun isNameValid(name:String?):Boolean{
         return name?.length in 3..20
     }
 
-    private fun updateUserName(uid:Int, name: String):Boolean{
-        //向服务器上传用户名
-        return true
-    }
+    private fun updateUserName(uid:Int, name: String):Boolean
+    =if(Mode.isLocal()) updateUserNameLocal(uid,name)
+    else updateUserNameRemote(uid,name)
+
+    private fun uploadImage():Int
+    =if(Mode.isLocal()) changeImageLocal()
+    else uploadImageRemote()
+
+    private fun updateUserImage(uid:Int, img:Int):Boolean
+    =if(Mode.isLocal()) updateUserImageLocal(uid,img)
+    else updateUserImageRemote(uid,img)
+
 }

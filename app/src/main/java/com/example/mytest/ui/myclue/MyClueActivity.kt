@@ -8,7 +8,12 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.mytest.R
 import com.example.mytest.ui.myfind.myfindMsg
 import com.example.mytest.user.Data
+import com.example.mytest.user.Mode
 import com.example.mytest.user.Person
+import com.example.mytest.utils.Local.getMyClueListALocal
+import com.example.mytest.utils.Local.getMyClueListBLocal
+import com.example.mytest.utils.Remote.getMyClueListARemote
+import com.example.mytest.utils.Remote.getMyClueListBRemote
 
 class MyClueActivity : AppCompatActivity() {
     private val tag ="MyClueActivity"
@@ -62,18 +67,12 @@ class MyClueActivity : AppCompatActivity() {
         }
     }
 
-    private fun getMyClueListA(uid :Int):ArrayList<Person>{
-        //连接数据库
-        //给定用户uid,获取评论的Person列表[A表]
-        //返回值为Person列表
-        return Data.my_ListClueA //本地数据
-    }
+    private fun getMyClueListA(uid :Int):ArrayList<Person>
+    =if(Mode.isLocal()) getMyClueListALocal(uid)
+    else getMyClueListARemote(uid)
 
-    private fun getMyClueListB(uid :Int):ArrayList<Person>{
-        //连接数据库
-        //给定用户uid,获取评论的Person列表[B表]
-        //返回值为Person列表
-        return Data.my_ListClueB //本地数据
-    }
+    private fun getMyClueListB(uid :Int):ArrayList<Person>
+    =if(Mode.isLocal()) getMyClueListBLocal(uid)
+    else getMyClueListBRemote(uid)
 
 }

@@ -17,7 +17,10 @@ import com.example.mytest.ui.myfind.myFindInfoAdapter
 import com.example.mytest.ui.myfind.myfindMsg
 import com.example.mytest.ui.square.Easy1Msg
 import com.example.mytest.user.Data
+import com.example.mytest.user.Mode
 import com.example.mytest.user.Person
+import com.example.mytest.utils.Local.getMyFindListBLocal
+import com.example.mytest.utils.Remote.getMyFindListBRemote
 
 class MyRelativeActivity : AppCompatActivity() {
     private val tag1 = "MyFindActivity"
@@ -50,11 +53,8 @@ class MyRelativeActivity : AppCompatActivity() {
         }
     }
 
-    private fun getMyFindListB(uid :Int):ArrayList<Person>{
-        //连接数据库
-        //给定用户uid,获取救助列表[B表]
-        //返回值为Person的列表
-        return Data.my_ListB //本地数据
-    }
+    private fun getMyFindListB(uid :Int):ArrayList<Person>
+    =if(Mode.isLocal()) getMyFindListBLocal(uid)
+    else getMyFindListBRemote(uid)
 
 }

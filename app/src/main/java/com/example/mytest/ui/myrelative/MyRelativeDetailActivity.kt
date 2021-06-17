@@ -17,8 +17,19 @@ import com.example.mytest.ui.squareDetail.Clue
 import com.example.mytest.ui.squareDetail.ClueAdapter
 import com.example.mytest.ui.squareDetail.ImageAdapter
 import com.example.mytest.user.Data
+import com.example.mytest.user.Mode
 import com.example.mytest.user.Person
 import com.example.mytest.user.PersonClue
+import com.example.mytest.utils.Local.getPersonClueBLocal
+import com.example.mytest.utils.Local.getPersonInfoBLocal
+import com.example.mytest.utils.Local.getUserImageLocal
+import com.example.mytest.utils.Local.getUserNameLocal
+import com.example.mytest.utils.Local.updateStatusBLocal
+import com.example.mytest.utils.Remote.getPersonClueBRemote
+import com.example.mytest.utils.Remote.getPersonInfoBRemote
+import com.example.mytest.utils.Remote.getUserImageRemote
+import com.example.mytest.utils.Remote.getUserNameRemote
+import com.example.mytest.utils.Remote.updateStatusBRemote
 
 
 class MyRelativeDetailActivity : AppCompatActivity() {
@@ -128,29 +139,21 @@ class MyRelativeDetailActivity : AppCompatActivity() {
         initClue(pid)
     }
 
-    private fun getPersonInfoB(pid: Int): Person {
-        //连接数据库 [B表]
-        //[A表]给定pid，获取人员信息，返回类型为Person
-        return Data.B_List[pid]
-    }
+    private fun getPersonInfoB(pid: Int): Person
+    =if(Mode.isLocal()) getPersonInfoBLocal(pid)
+    else getPersonInfoBRemote(pid)
 
-    private fun getPersonClueB(pid: Int): ArrayList<PersonClue> {
-        //数据库连接 [B表]
-        //[A表]给定pid，获取clue的列表，返回值为ArrayList<PersonClue>
-        return Data.B_List[pid].clues
-    }
+    private fun getPersonClueB(pid: Int): ArrayList<PersonClue>
+    =if(Mode.isLocal()) getPersonClueBLocal(pid)
+    else getPersonClueBRemote(pid)
 
-    private fun getUserName(uid: Int): String {
-        //连接数据库
-        //通过用户id获取用户名
-        return Data.userList[uid].name
-    }
+    private fun getUserName(uid: Int): String
+    =if(Mode.isLocal()) getUserNameLocal(uid)
+    else getUserNameRemote(uid)
 
-    private fun getUserImage(uid: Int): Int {
-        //连接数据库
-        //通过用户id获取用户头像
-        return Data.userList[uid].image
-    }
+    private fun getUserImage(uid: Int): Int
+    =if(Mode.isLocal()) getUserImageLocal(uid)
+    else getUserImageRemote(uid)
 
 
     private fun showSingSelect() {
@@ -163,17 +166,15 @@ class MyRelativeDetailActivity : AppCompatActivity() {
                 DialogInterface.OnClickListener { dialogInterface, i ->
                     if (choice !== -1) {
                         val status = choice - 1
-                        updateStatusB(pid, status)//数据库修改
-                        Data.B_List[pid].status = status //本地修改
+                        updateStatusB(pid, status)
                         Toast.makeText(this, "状态修改为： ${items[choice]}", Toast.LENGTH_LONG).show()
                     }
                 })
         builder.create().show()
     }
 
-    private fun updateStatusB(pid: Int, status: Int): Boolean {
-        //连接数据库 [B表]
-        //提供pid，status；将状态修改为status
-        return true
-    }
+    private fun updateStatusB(pid: Int, status: Int): Boolean
+    =if(Mode.isLocal()) updateStatusBLocal(pid,status)
+    else updateStatusBRemote(pid,status)
+
 }

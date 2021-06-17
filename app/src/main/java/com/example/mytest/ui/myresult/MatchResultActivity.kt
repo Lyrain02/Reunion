@@ -17,7 +17,16 @@ import com.example.mytest.ui.myfind.myFindInfoAdapter
 import com.example.mytest.ui.myfind.myfindMsg
 import com.example.mytest.ui.square.Easy1Msg
 import com.example.mytest.user.Data
+import com.example.mytest.user.Mode
 import com.example.mytest.user.Person
+import com.example.mytest.utils.Local.getMatchALocal
+import com.example.mytest.utils.Local.getMatchBLocal
+import com.example.mytest.utils.Local.getPersonInfoALocal
+import com.example.mytest.utils.Local.getPersonInfoBLocal
+import com.example.mytest.utils.Remote.getMatchARemote
+import com.example.mytest.utils.Remote.getMatchBRemote
+import com.example.mytest.utils.Remote.getPersonInfoARemote
+import com.example.mytest.utils.Remote.getPersonInfoBRemote
 import org.w3c.dom.Text
 
 class MatchResultActivity : AppCompatActivity() {
@@ -86,29 +95,21 @@ class MatchResultActivity : AppCompatActivity() {
     }
 
 
-    private fun getPersonInfoA(pid:Int):Person{
-        //连接数据库
-        //[A表]给定pid，获取人员信息，返回类型为Person
-        return Data.A_List[pid]
-    }
+    private fun getPersonInfoA(pid:Int):Person
+    =if(Mode.isLocal()) getPersonInfoALocal(pid)
+    else getPersonInfoARemote(pid)
 
-    private fun getPersonInfoB(pid:Int):Person{
-        //连接数据库
-        //[A表]给定pid，获取人员信息，返回类型为Person
-        return Data.B_List[pid]
-    }
+    private fun getPersonInfoB(pid:Int):Person
+    =if(Mode.isLocal()) getPersonInfoBLocal(pid)
+    else getPersonInfoBRemote(pid)
 
-    private fun getMatchA(pid:Int):ArrayList<Person>{
-        //连接数据库
-        //给定A表pid，查询B表匹配结果
-        //返回ArrayList<Person>
-        return Data.B_List
-    }
+    private fun getMatchA(pid:Int):ArrayList<Person>
+    =if(Mode.isLocal()) getMatchALocal(pid)
+    else getMatchARemote(pid)
 
-    private fun getMatchB(pid:Int):ArrayList<Person>{
-        //连接数据库
-        //给定B表pid，查询A表匹配结果
-        //返回ArrayList<Person>
-        return Data.A_List
-    }
+
+    private fun getMatchB(pid:Int):ArrayList<Person>
+    =if(Mode.isLocal()) getMatchBLocal(pid)
+    else getMatchBRemote(pid)
+
 }

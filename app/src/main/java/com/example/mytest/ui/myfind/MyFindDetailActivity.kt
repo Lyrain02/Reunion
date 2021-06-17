@@ -17,10 +17,17 @@ import com.example.mytest.ui.myresult.MatchResultActivity
 import com.example.mytest.ui.squareDetail.Clue
 import com.example.mytest.ui.squareDetail.ClueAdapter
 import com.example.mytest.ui.squareDetail.ImageAdapter
-import com.example.mytest.user.Data
-import com.example.mytest.user.Person
-import com.example.mytest.user.PersonClue
-import com.example.mytest.user.User
+import com.example.mytest.user.*
+import com.example.mytest.utils.Local.getPersonClueALocal
+import com.example.mytest.utils.Local.getPersonInfoALocal
+import com.example.mytest.utils.Local.getUserImageLocal
+import com.example.mytest.utils.Local.getUserNameLocal
+import com.example.mytest.utils.Local.updateStatusALocal
+import com.example.mytest.utils.Remote.getPersonClueARemote
+import com.example.mytest.utils.Remote.getPersonInfoARemote
+import com.example.mytest.utils.Remote.getUserImageRemote
+import com.example.mytest.utils.Remote.getUserNameRemote
+import com.example.mytest.utils.Remote.updateStatusARemote
 
 class MyFindDetailActivity : AppCompatActivity() {
     val tag = "MyFindDetailActivity"
@@ -129,30 +136,21 @@ class MyFindDetailActivity : AppCompatActivity() {
         initClue(pid)
     }
 
-    private fun getPersonInfoA(pid:Int):Person{
-        //连接数据库 [A表]
-        //[A表]给定pid，获取人员信息，返回类型为Person
-        return Data.A_List[pid]
-    }
+    private fun getPersonInfoA(pid:Int):Person
+    = if(Mode.isLocal()) getPersonInfoALocal(pid)
+    else getPersonInfoARemote(pid)
 
-    private fun getPersonClueA(pid:Int):ArrayList<PersonClue>{
-        //数据库连接 [A表]
-        //[A表]给定pid，获取clue的列表，返回值为ArrayList<PersonClue>
-        return Data.A_List[pid].clues
-    }
+    private fun getPersonClueA(pid:Int):ArrayList<PersonClue>
+    = if(Mode.isLocal()) getPersonClueALocal(pid)
+    else getPersonClueARemote(pid)
 
-    private fun getUserName(uid:Int):String{
-        //连接数据库
-        //通过用户id获取用户名
-        return Data.userList[uid].name
-    }
+    private fun getUserName(uid:Int):String
+    =if(Mode.isLocal()) getUserNameLocal(uid)
+    else getUserNameRemote(uid)
 
-    private fun getUserImage(uid:Int):Int{
-        //连接数据库
-        //通过用户id获取用户头像
-        return Data.userList[uid].image
-    }
-
+    private fun getUserImage(uid:Int):Int
+    =if(Mode.isLocal()) getUserImageLocal(uid)
+    else getUserImageRemote(uid)
 
     private fun showSingSelect() {
         val items = arrayOf("撤销寻人", "未找到", "已找到")
@@ -164,17 +162,15 @@ class MyFindDetailActivity : AppCompatActivity() {
                 DialogInterface.OnClickListener { dialogInterface, i ->
                     if (choice !== -1) {
                         val status = choice-1
-                        updateStatusA(pid,status)//数据库修改
-                        Data.A_List[pid].status = status //本地修改
+                        updateStatusA(pid,status)
                         Toast.makeText(this, "状态修改为： ${items[choice]}", Toast.LENGTH_LONG).show()
                     }
                 })
         builder.create().show()
     }
 
-    private fun updateStatusA(pid:Int,status: Int):Boolean{
-        //连接数据库 [A表]
-        //提供pid，status；将状态修改为status
-        return true
-    }
+    private fun updateStatusA(pid:Int,status: Int):Boolean
+    =if(Mode.isLocal()) updateStatusALocal(pid,status)
+    else updateStatusARemote(pid,status)
+
 }

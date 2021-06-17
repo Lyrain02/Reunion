@@ -11,10 +11,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mytest.R
-import com.example.mytest.user.Data
-import com.example.mytest.user.Person
-import com.example.mytest.user.PersonClue
-import com.example.mytest.user.User
+import com.example.mytest.user.*
+import com.example.mytest.utils.Local
+import com.example.mytest.utils.Local.addClueBLocal
+import com.example.mytest.utils.Local.getPersonClueBLocal
+import com.example.mytest.utils.Local.getPersonInfoBLocal
+import com.example.mytest.utils.Remote
+import com.example.mytest.utils.Remote.addClueBRemote
+import com.example.mytest.utils.Remote.getPersonClueBRemote
+import com.example.mytest.utils.Remote.getPersonInfoBRemote
 
 class bDetailActivity : AppCompatActivity() {
     val tag = "bDetailActivity"
@@ -123,9 +128,6 @@ class bDetailActivity : AppCompatActivity() {
         return if(clue!=null) {
             val pclue = PersonClue(pid,User.id,getCurrentTime(),clue)
             if(clue.length!=0 && addClueB(pclue)) {
-                Data.B_List[pid].clues.add(pclue)//本地存储
-                if(person !in Data.my_ListClueB)
-                    Data.my_ListClueB.add(person)//本地存储
                 clueList.add(Clue(getUserName(pclue.uid), getUserImage(pclue.uid), getCurrentTime(), clue ?: ""))
                 Log.d(tag,"submit successful")
                 true
@@ -155,39 +157,27 @@ class bDetailActivity : AppCompatActivity() {
     }
 
 
-    private fun addClueB(pclue: PersonClue):Boolean{
-        //连接数据库[A表]
-        //将PersonClue上传到数据库
-        return true
-    }
+    private fun addClueB(pclue: PersonClue):Boolean
+    =if(Mode.isLocal()) addClueBLocal(pclue)
+    else addClueBRemote(pclue)
 
-    private fun getPersonInfoB(pid:Int):Person{
-        //连接数据库 [A表]
-        //[A表]给定pid，获取人员信息，返回类型为Person
-        return Data.B_List[pid]
-    }
+    private fun getPersonInfoB(pid:Int):Person
+    =if(Mode.isLocal()) getPersonInfoBLocal(pid)
+    else getPersonInfoBRemote(pid)
 
-    private fun getPersonClueB(pid:Int):ArrayList<PersonClue>{
-        //数据库连接 [A表]
-        //[A表]给定pid，获取clue的列表，返回值为ArrayList<PersonClue>
-        return Data.B_List[pid].clues
-    }
+    private fun getPersonClueB(pid:Int):ArrayList<PersonClue>
+    =if(Mode.isLocal()) getPersonClueBLocal(pid)
+    else getPersonClueBRemote(pid)
 
-    private fun getUserName(uid:Int):String{
-        //连接数据库
-        //通过用户id获取用户名
-        return Data.userList[uid].name
-    }
+    private fun getUserName(uid:Int):String
+    =if(Mode.isLocal()) Local.getUserNameLocal(uid)
+    else Remote.getUserNameRemote(uid)
 
-    private fun getUserImage(uid:Int):Int{
-        //连接数据库
-        //通过用户id获取用户头像
-        return Data.userList[uid].image
-    }
+    private fun getUserImage(uid:Int):Int
+    = if(Mode.isLocal()) Local.getUserImageLocal(uid)
+    else Remote.getUserImageRemote(uid)
 
-    private fun getCurrentTime():String{
-        //非数据库连接部分，可以暂时不实现
-        //获取发布时间
-        return "2021年6月11日"
-    }
+    private fun getCurrentTime():String
+    =if(Mode.isLocal()) Local.getCurrentTimeLocal()
+    else Remote.getCurrentTimeRemote()
 }

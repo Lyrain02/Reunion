@@ -12,7 +12,12 @@ import android.view.View
 import android.widget.*
 import com.example.mytest.R
 import com.example.mytest.user.Data
+import com.example.mytest.user.Mode
 import com.example.mytest.user.Person
+import com.example.mytest.utils.Local
+import com.example.mytest.utils.Local.uploadPersonALocal
+import com.example.mytest.utils.Remote
+import com.example.mytest.utils.Remote.uploadPersonARemote
 import com.lljjcoder.citypickerview.widget.CityPicker
 import java.util.*
 import kotlin.collections.ArrayList
@@ -141,10 +146,7 @@ class Submit2Activity : AppCompatActivity() {
             Log.d("Submit1Activity", person.name + person.location +
                     person.sex + person.date+person.blood+person.status)
 
-            person.pid = Data.B_List.size//本地存储
-            Data.B_List.add(person)//本地存储，广场
-            Data.my_ListB.add(person)//本地存储，个人发布
-            if(uploadPersonB(person)){
+            if(uploadPersonA(person)){
                 Toast.makeText(this.applicationContext,"提交成功",Toast.LENGTH_LONG).show()
                 finish()
             }else{
@@ -307,22 +309,17 @@ class Submit2Activity : AppCompatActivity() {
         })
     }
 
-    private fun uploadImage():Int{
-        // 上传照片，并返回Int
-        return R.drawable.eg_girl
-    }
+    private fun uploadImage():Int
+    =if(Mode.isLocal()) Local.uploadImageLocal()
+    else Remote.uploadImageRemote()
 
-    private fun uploadPersonB(p:Person):Boolean{
-        //连接数据库[B表]
-        //上传Person类的数据，需要生成pid
-        return true
-    }
+    private fun getCurrentTime():String
+    =if(Mode.isLocal()) Local.getCurrentTimeLocal()
+    else Remote.getCurrentTimeRemote()
 
-    private fun getCurrentTime():String{
-        //非数据库连接部分，可以暂时不实现
-        //获取发布时间
-        return "2021年6月11日"
-    }
+    private fun uploadPersonA(p:Person):Boolean
+    =if(Mode.isLocal()) uploadPersonALocal(p)
+    else uploadPersonARemote(p)
 
 }
 

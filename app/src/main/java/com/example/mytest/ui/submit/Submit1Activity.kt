@@ -13,7 +13,14 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mytest.R
 import com.example.mytest.user.Data
+import com.example.mytest.user.Mode
 import com.example.mytest.user.Person
+import com.example.mytest.utils.Local.getCurrentTimeLocal
+import com.example.mytest.utils.Local.uploadImageLocal
+import com.example.mytest.utils.Local.uploadPersonBLocal
+import com.example.mytest.utils.Remote.getCurrentTimeRemote
+import com.example.mytest.utils.Remote.uploadImageRemote
+import com.example.mytest.utils.Remote.uploadPersonBRemote
 import com.lljjcoder.citypickerview.widget.CityPicker
 import com.lljjcoder.citypickerview.widget.CityPicker.OnCityItemClickListener
 import java.util.*
@@ -141,9 +148,7 @@ class Submit1Activity : AppCompatActivity() {
             person.s_relative = linkmanaddress.text.toString()
             Log.d("Submit1Activity", person.name + person.location + person.sex + person.date+person.blood)
 
-            person.pid = Data.A_List.size//本地存储
-            Data.A_List.add(person)//本地存储，广场
-            Data.my_ListA.add(person)//本地存储，个人发布
+
             if(uploadPersonB(person)){
                 Toast.makeText(this.applicationContext,"提交成功",Toast.LENGTH_LONG).show()
                 finish()
@@ -308,20 +313,16 @@ class Submit1Activity : AppCompatActivity() {
         })
     }
 
-    private fun uploadImage():Int{
-        // 上传照片，并返回照片存储的结果Int
-        return R.drawable.eg_girl
-    }
+    private fun uploadImage():Int
+    =if(Mode.isLocal()) uploadImageLocal()
+    else uploadImageRemote()
 
-    private fun uploadPersonB(p:Person):Boolean{
-        //连接数据库[A表]
-        //上传Person类的数据，需要生成pid
-        return true
-    }
+    private fun getCurrentTime():String
+    =if(Mode.isLocal()) getCurrentTimeLocal()
+    else getCurrentTimeRemote()
 
-    private fun getCurrentTime():String{
-        //获取发布时间
-        return "2021年6月11日"
-    }
+    private fun uploadPersonB(p:Person):Boolean
+    =if(Mode.isLocal()) uploadPersonBLocal(p)
+    else uploadPersonBRemote(p)
 
 }

@@ -17,7 +17,10 @@ import com.example.mytest.initialActivity
 import com.example.mytest.ui.squareDetail.aDetailActivity
 import com.example.mytest.ui.squareDetail.bDetailActivity
 import com.example.mytest.user.Data
+import com.example.mytest.user.Mode
 import com.example.mytest.user.Person
+import com.example.mytest.utils.Local.getPersonListALocal
+import com.example.mytest.utils.Remote.getPersonListARemote
 
 
 class FirstFragment : Fragment() {
@@ -89,10 +92,8 @@ class FirstFragment : Fragment() {
         }
     }
 
-    private fun getPersonListA():ArrayList<Person>{
-        //连接数据库
-        //查询A表信息，返回Person列表
-        return Data.A_List
-    }
+    private fun getPersonListA():ArrayList<Person> =
+        if(Mode.isLocal()) getPersonListALocal()
+        else getPersonListARemote()
 
 }
