@@ -1,8 +1,8 @@
 # 简介
-U代表用户      u_name
-P代表走失人员 p_nameA, p_nameB
-S代表救助者    s_name
-L代表丢失者    l_name
+U代表用户      u_name  
+P代表走失人员 p_nameA, p_nameB  
+S代表救助者    s_name  
+L代表丢失者    l_name  
 
 
 
