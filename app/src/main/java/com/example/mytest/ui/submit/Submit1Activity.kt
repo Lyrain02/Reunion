@@ -149,7 +149,7 @@ class Submit1Activity : AppCompatActivity() {
             Log.d("Submit1Activity", person.name + person.location + person.sex + person.date+person.blood)
 
 
-            if(uploadPersonB(person)){
+            if(person.image.size!=0 && uploadPersonB(person)){
                 Toast.makeText(this.applicationContext,"提交成功",Toast.LENGTH_LONG).show()
                 finish()
             }else{

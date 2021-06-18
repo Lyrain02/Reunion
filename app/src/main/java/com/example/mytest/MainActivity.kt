@@ -6,6 +6,7 @@ import android.os.UserHandle
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.multidex.MultiDex
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -16,6 +17,7 @@ import com.example.mytest.user.User
 class MainActivity : AppCompatActivity() {
     val tag = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
+        MultiDex.install(this);
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()

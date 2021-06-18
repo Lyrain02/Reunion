@@ -15,6 +15,20 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+        android {
+            compileSdkVersion 30
+            defaultConfig {
+                applicationId "com.baidu.www"
+                minSdkVersion 19
+                targetSdkVersion 30
+                testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+                multiDexEnabled true
+            }
+        }
+
     }
 
     buildTypes {
@@ -33,6 +47,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
     implementation fileTree(dir: 'D:\\Git\\android\\Reunion\\app\\libs', include: ['*.aar', '*.jar'], exclude: [])
     compile 'com.github.bumptech.glide:glide:4.11.0'
     compile 'com.lzy.widget:imagepicker:0.6.1'
