@@ -2,6 +2,7 @@ package com.example.mytest.utils
 
 import com.example.mytest.Api.*
 import com.example.mytest.user.Data
+import com.example.mytest.user.User
 
 /*----注释-----*/
 //远程服务器数据访问
@@ -14,9 +15,26 @@ object Remote {
     }
 
     fun getUserStatusRemote(uid:Int):String{
+
+        var res=""
+        val t=Thread {
+            val user = get_user(uid)
+            println(user)
+            if(user==null){
+                res=""
+            }else{
+                if(!user.containsKey("identify")||user.get("identify")==""){
+                    res= User.AUTH_UNFINISHED
+                }else{
+                    res= User.AUTH_FINISHED
+                }
+            }
+        }
+        t.start()
+        t.join()
         //连接数据库
         //通过用户id，获取用户状态
-        return Data.userList[uid].status
+        return res
     }
 
     fun insertUserRemote(username: String,pw:String):Int{
@@ -37,7 +55,7 @@ object Remote {
         //更新数据库
         //将用户命和密码插入数据库,获取用户id
         //-1表示失败，0及以上为真实用户
-        return return if(res=="") -1 else Integer.parseInt(res)
+        return if(res=="") -1 else Integer.parseInt(res)
     }
 
     fun isUserValidRemote(username: String):Boolean{

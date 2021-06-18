@@ -40,4 +40,18 @@ public class Api {
         map.put("password",password);
         return send(map2json(map),"/login/sign-out").second;
     }
+
+    public static Map<String, String> get_user(int id){
+        Map<String, String> map = new HashMap<>();
+        map.put("id",Integer.toString(id));
+        Pair<String, Integer> send = send(map2json(map), "/user/detail");
+        if(send.second==404){
+            return null;
+        }
+        return json2map(send.first);
+    }
+
+//    public static int set_image(String src){
+//        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+//    }
 }
