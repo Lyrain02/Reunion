@@ -2,7 +2,7 @@ package com.example.mytest.user
 
 class Person{
     var pid = 0
-    val image = ArrayList<Int>()
+    var image = ArrayList<Int>()
     var name:String = "暂缺"
     var location:String = "暂缺"
     var date: String = "暂缺"

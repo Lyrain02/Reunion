@@ -2,6 +2,7 @@ package com.example.mytest.ui.submit
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.InputType
@@ -11,15 +12,15 @@ import android.view.View
 import android.widget.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mytest.NotePadNewActivity
+import com.example.mytest.NumStore
 import com.example.mytest.R
-import com.example.mytest.user.Data
 import com.example.mytest.user.Mode
 import com.example.mytest.user.Person
 import com.example.mytest.utils.Local.getCurrentTimeLocal
 import com.example.mytest.utils.Local.uploadImageLocal
 import com.example.mytest.utils.Local.uploadPersonBLocal
 import com.example.mytest.utils.Remote.getCurrentTimeRemote
-import com.example.mytest.utils.Remote.uploadImageRemote
 import com.example.mytest.utils.Remote.uploadPersonBRemote
 import com.lljjcoder.citypickerview.widget.CityPicker
 import com.lljjcoder.citypickerview.widget.CityPicker.OnCityItemClickListener
@@ -28,7 +29,7 @@ import kotlin.collections.ArrayList
 
 
 class Submit1Activity : AppCompatActivity() {
-    var totblood = arrayOf("A型","B型","AB型","O型","其他")
+    var totblood = arrayOf("A型", "B型", "AB型", "O型", "其他")
     private val imageList = ArrayList<Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -84,8 +85,9 @@ class Submit1Activity : AppCompatActivity() {
                 arg0: AdapterView<*>?, arg1: View,
                 arg2: Int, arg3: Long
             ) {
-                spinnerval=totblood[arg2]
+                spinnerval = totblood[arg2]
             }
+
             override fun onNothingSelected(arg0: AdapterView<*>?) {
 
             }
@@ -93,9 +95,10 @@ class Submit1Activity : AppCompatActivity() {
 
         loadImage.setOnClickListener {
             val imageSrc = uploadImage()
+//            println("imageSrc=========================$imageSrc")
             imageList.add(imageSrc)
-            Toast.makeText(this.applicationContext,"上传一张图片",Toast.LENGTH_LONG).show()
-            Log.d("Submit1","upload image")
+            Toast.makeText(this.applicationContext, "上传一张图片", Toast.LENGTH_LONG).show()
+            Log.d("Submit1", "upload image")
         }
 
         /*函数：提交公告*/
@@ -115,24 +118,24 @@ class Submit1Activity : AppCompatActivity() {
             else person.sex=Person.SEX_OTHER
 
             when(spinnerval){
-                "A型"->{
-                    person.blood=Person.BLOOD_A
+                "A型" -> {
+                    person.blood = Person.BLOOD_A
                 }
-                "AB型"->{
-                    person.blood=Person.BLOOD_AB
+                "AB型" -> {
+                    person.blood = Person.BLOOD_AB
                 }
-                "B型"->{
-                    person.blood=Person.BLOOD_B
+                "B型" -> {
+                    person.blood = Person.BLOOD_B
                 }
-                "O型"->{
-                    person.blood=Person.BLOOD_O
+                "O型" -> {
+                    person.blood = Person.BLOOD_O
                 }
-                "其他"->{
-                    person.blood=Person.BLOOD_OTHER
+                "其他" -> {
+                    person.blood = Person.BLOOD_OTHER
                 }
             }
 
-            person.height = ptall.toString() +"cm"
+            person.height = ptall.text.toString() +"cm"
             person.weight = pshape.text.toString()+"kg"
             person.appearance = appearance.text.toString()
             person.other = else_info_textview.text.toString()
@@ -146,14 +149,17 @@ class Submit1Activity : AppCompatActivity() {
             person.s_postcode = linkmanpostcode.text.toString()
             person.s_address = linkmanaddress.text.toString()
             person.s_relative = linkmanaddress.text.toString()
-            Log.d("Submit1Activity", person.name + person.location + person.sex + person.date+person.blood)
+            Log.d(
+                "Submit1Activity",
+                person.name + person.location + person.sex + person.date + person.blood
+            )
 
-
+            println("image===============${person.image[1]}")
             if(person.image.size!=0 && uploadPersonB(person)){
-                Toast.makeText(this.applicationContext,"提交成功",Toast.LENGTH_LONG).show()
+                Toast.makeText(this.applicationContext, "提交成功", Toast.LENGTH_LONG).show()
                 finish()
             }else{
-                Toast.makeText(this.applicationContext,"提交失败",Toast.LENGTH_LONG).show()
+                Toast.makeText(this.applicationContext, "提交失败", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -321,8 +327,28 @@ class Submit1Activity : AppCompatActivity() {
     =if(Mode.isLocal()) getCurrentTimeLocal()
     else getCurrentTimeRemote()
 
-    private fun uploadPersonB(p:Person):Boolean
+    private fun uploadPersonB(p: Person):Boolean
     =if(Mode.isLocal()) uploadPersonBLocal(p)
     else uploadPersonBRemote(p)
+
+    private fun uploadImageRemote():Int{
+
+        if (NumStore.updarted==1){
+            NumStore.updarted=0
+//            println(NumStore.setImage)
+            return NumStore.setImage
+        }else{
+            // TODO Auto-generated method stub
+            val intent = Intent()
+            intent.setClass(
+                this@Submit1Activity,
+                NotePadNewActivity::class.java
+            ) //this前面为当前activty名称，class前面为要跳转到得activity名称
+
+            startActivity(intent)
+
+            return R.drawable.eg_girl
+        }
+    }
 
 }

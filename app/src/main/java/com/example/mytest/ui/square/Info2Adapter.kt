@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mytest.Api
 import com.example.mytest.R
+import com.example.mytest.Util
+
 //B类广场瀑布流recycleview
 class Info2Adapter (val infolist:List<Easy1Msg>) : RecyclerView.Adapter<Info2Adapter.ViewHolder>(){
 
@@ -36,7 +39,17 @@ class Info2Adapter (val infolist:List<Easy1Msg>) : RecyclerView.Adapter<Info2Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val info = infolist[position]
-        holder.pimage.setImageResource(info.imageId)
+        if(info.imageId==R.drawable.eg_girl||info.imageId==R.drawable.eg_boy)
+            holder.pimage.setImageResource(info.imageId)//显示
+        else{
+            var getImage = ""
+            val t = Thread {
+                getImage = Api.get_image(info.imageId)
+            }
+            t.start()
+            t.join()
+            holder.pimage.setImageBitmap(Util.load(getImage))
+        }
         holder.pname.text=info.name
         holder.pplace.text=info.place
         holder.pdate.text=info.datetime

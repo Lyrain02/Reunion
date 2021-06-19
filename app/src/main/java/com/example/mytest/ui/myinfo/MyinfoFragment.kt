@@ -11,8 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.mytest.R
-import com.example.mytest.initialActivity
+import com.example.mytest.*
 import com.example.mytest.ui.Myclue.MyClueActivity
 import com.example.mytest.ui.myfind.MyFindActivity
 import com.example.mytest.ui.myrelative.MyRelativeActivity
@@ -27,7 +26,6 @@ import com.example.mytest.utils.Local.updateUserNameLocal
 import com.example.mytest.utils.Remote.authentificationRemote
 import com.example.mytest.utils.Remote.updateUserImageRemote
 import com.example.mytest.utils.Remote.updateUserNameRemote
-import com.example.mytest.utils.Remote.uploadImageRemote
 
 
 class MyinfoFragment : Fragment() {
@@ -65,7 +63,17 @@ class MyinfoFragment : Fragment() {
         myinfo_image.setOnClickListener {
             var image = uploadImage()  //获取头像照片
             if(updateUserImage(User.id, image)) { //存储用户头像
-                myinfo_image.setImageResource(image)//显示
+                if(image==R.drawable.eg_girl||image==R.drawable.eg_boy)
+                    myinfo_image.setImageResource(image)//显示
+                else{
+                    var getImage = ""
+                    val t = Thread {
+                        getImage = Api.get_image(image)
+                    }
+                    t.start()
+                    t.join()
+                    myinfo_image.setImageBitmap(Util.load(getImage))
+                }
                 User.image = image //User更新
                 Toast.makeText(this.context,"更新成功",Toast.LENGTH_LONG).show()
             }else{
@@ -154,7 +162,17 @@ class MyinfoFragment : Fragment() {
     }
 
     private fun initMyinfo(viewHolder:ViewHolder){
-        viewHolder.image.setImageResource(User.image)
+        if(User.image==R.drawable.eg_girl||User.image==R.drawable.eg_boy)
+            viewHolder.image.setImageResource(User.image)//显示
+        else{
+            var getImage = ""
+            val t = Thread {
+                getImage = Api.get_image(User.image)
+            }
+            t.start()
+            t.join()
+            viewHolder.image.setImageBitmap(Util.load(getImage))
+        }
         viewHolder.name.text = User.name
         viewHolder.auth.text = User.auth
     }
@@ -189,5 +207,25 @@ class MyinfoFragment : Fragment() {
     private fun updateUserImage(uid:Int, img:Int):Boolean
     =if(Mode.isLocal()) updateUserImageLocal(uid,img)
     else updateUserImageRemote(uid,img)
+
+
+    private fun uploadImageRemote():Int{
+
+        if (NumStore.updarted==1){
+            NumStore.updarted=0
+            return NumStore.setImage
+        }else{
+            // TODO Auto-generated method stub
+            val intent = Intent()
+            intent.setClass(
+                requireActivity(),
+                NotePadNewActivity::class.java
+            ) //this前面为当前activty名称，class前面为要跳转到得activity名称
+
+            startActivity(intent)
+
+            return R.drawable.eg_girl
+        }
+    }
 
 }

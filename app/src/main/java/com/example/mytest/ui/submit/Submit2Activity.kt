@@ -2,6 +2,7 @@ package com.example.mytest.ui.submit
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,8 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.*
+import com.example.mytest.NotePadNewActivity
+import com.example.mytest.NumStore
 import com.example.mytest.R
 import com.example.mytest.user.Data
 import com.example.mytest.user.Mode
@@ -129,7 +132,7 @@ class Submit2Activity : AppCompatActivity() {
                 }
             }
 
-            person.height = ptall.toString() +"cm"
+            person.height = ptall.text.toString() +"cm"
             person.weight = pshape.text.toString()+"kg"
             person.appearance = appearance.text.toString()
             person.other = else_info_textview.text.toString()
@@ -311,7 +314,7 @@ class Submit2Activity : AppCompatActivity() {
 
     private fun uploadImage():Int
     =if(Mode.isLocal()) Local.uploadImageLocal()
-    else Remote.uploadImageRemote()
+    else uploadImageRemote()
 
     private fun getCurrentTime():String
     =if(Mode.isLocal()) Local.getCurrentTimeLocal()
@@ -320,6 +323,25 @@ class Submit2Activity : AppCompatActivity() {
     private fun uploadPersonA(p:Person):Boolean
     =if(Mode.isLocal()) uploadPersonALocal(p)
     else uploadPersonARemote(p)
+
+    private fun uploadImageRemote():Int{
+
+        if (NumStore.updarted==1){
+            NumStore.updarted=0
+            return NumStore.setImage
+        }else{
+            // TODO Auto-generated method stub
+            val intent = Intent()
+            intent.setClass(
+                this@Submit2Activity,
+                NotePadNewActivity::class.java
+            ) //this前面为当前activty名称，class前面为要跳转到得activity名称
+
+            startActivity(intent)
+
+            return R.drawable.eg_girl
+        }
+    }
 
 }
 

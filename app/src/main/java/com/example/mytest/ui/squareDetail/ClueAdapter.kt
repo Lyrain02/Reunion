@@ -7,7 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mytest.Api
 import com.example.mytest.R
+import com.example.mytest.Util
 
 class ClueAdapter(val clueList: List<Clue>) : //FruitAdaptor参数是data
     RecyclerView.Adapter<ClueAdapter.ViewHolder>() {
@@ -32,7 +34,17 @@ class ClueAdapter(val clueList: List<Clue>) : //FruitAdaptor参数是data
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //为ViewHoler绑定内容
         val clue = clueList[position] //获取数据
-        holder.u_image.setImageResource(clue.userimg)
+        if(clue.userimg==R.drawable.eg_girl||clue.userimg==R.drawable.eg_boy)
+            holder.u_image.setImageResource(clue.userimg)//显示
+        else{
+            var getImage = ""
+            val t = Thread {
+                getImage = Api.get_image(clue.userimg)
+            }
+            t.start()
+            t.join()
+            holder.u_image.setImageBitmap(Util.load(getImage))
+        }
         holder.u_name.text = clue.username
         holder.clue_date.text = clue.date
         holder.clue_msg.text = clue.msg

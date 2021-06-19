@@ -7,7 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mytest.Api
 import com.example.mytest.R
+import com.example.mytest.Util
 
 class ImageAdapter(val imageList: List<Int>) : //FruitAdaptor参数是data
         RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
@@ -29,7 +31,17 @@ class ImageAdapter(val imageList: List<Int>) : //FruitAdaptor参数是data
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //为ViewHoler绑定内容
         val img = imageList[position] //获取数据
-        holder.p_image.setImageResource(img)
+        if(img==R.drawable.eg_girl||img==R.drawable.eg_boy)
+            holder.p_image.setImageResource(img)//显示
+        else{
+            var getImage = ""
+            val t = Thread {
+                getImage = Api.get_image(img)
+            }
+            t.start()
+            t.join()
+            holder.p_image.setImageBitmap(Util.load(getImage))
+        }
     }
     override fun getItemCount() = imageList.size
 }

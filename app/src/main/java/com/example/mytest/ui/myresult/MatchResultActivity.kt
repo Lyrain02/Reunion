@@ -10,7 +10,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.mytest.Api
 import com.example.mytest.R
+import com.example.mytest.Util
 import com.example.mytest.ui.Myclue.MyClueInfoAdapterA
 import com.example.mytest.ui.Myclue.MyClueInfoAdapterB
 import com.example.mytest.ui.myfind.myFindInfoAdapter
@@ -74,7 +76,17 @@ class MatchResultActivity : AppCompatActivity() {
             else-> Person()
         }
         viewHolder.pname.text = person.name
-        viewHolder.pimage.setImageResource(person.image[0])
+        if(person.image[0]==R.drawable.eg_girl||person.image[0]==R.drawable.eg_boy)
+            viewHolder.pimage.setImageResource(person.image[0])//显示
+        else{
+            var getImage = ""
+            val t = Thread {
+                getImage = Api.get_image(person.image[0])
+            }
+            t.start()
+            t.join()
+            viewHolder.pimage.setImageBitmap(Util.load(getImage))
+        }
         viewHolder.pplace.text = person.location
         viewHolder.pdate.text = person.pdate
         when(person.status){
